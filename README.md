@@ -104,6 +104,16 @@ Login, payment, and the model are separate doors.
 
 The full contract, endpoints, and the order of setup are in [`docs/ACCESS.md`](docs/ACCESS.md). The calls themselves are in the core and covered by tests: `pkce_s256`, `redirect_allowed`, `paypal_order`, `chatgpt_authorize_url`, `plan_usage_granted`, `browser_realtime_secret`. None of them open a socket.
 
+## Shell
+
+```bash
+make shell
+```
+
+That serves the base UI from [`ui/`](ui) on `127.0.0.1:8787`. The page draws one card per door returned by `/api/surface`. A door is locked until the keys in `.env` are present. PayPal creates a sandbox order and captures it when the buyer returns. ChatGPT sign-in is the local OAuth flow. The live API mints a short-lived secret and the page does not print it.
+
+Replace `ui/` to change the interface. The routes stay. See [`LIVEUI.md`](LIVEUI.md).
+
 ## Sandboxes
 
 <picture>

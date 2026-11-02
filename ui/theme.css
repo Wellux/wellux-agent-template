@@ -1,0 +1,67 @@
+:root {
+  --ink: #07141c;
+  --panel: #0d1c26;
+  --panel-2: #122633;
+  --line: #1d3c4a;
+  --fog: #8eacb8;
+  --paper: #e7f1f4;
+  --signal: #3ec4e0;
+  --signal-ink: #062028;
+  font-family: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  color: var(--paper);
+  background:
+    radial-gradient(900px 360px at 80% -10%, color-mix(in srgb, var(--signal) 18%, transparent), transparent 60%),
+    var(--ink);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100dvh; }
+button, a { cursor: pointer; }
+code { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.85em; }
+
+.top, main { width: min(720px, calc(100% - 32px)); margin: 0 auto; }
+.top { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; padding: 20px 0 8px; }
+.brand { margin: 0; letter-spacing: 0.08em; font-weight: 650; }
+.brand span { color: var(--fog); letter-spacing: 0; font-weight: 450; }
+.notice { margin: 0; color: var(--signal); font-size: 0.85rem; }
+.lede { color: var(--fog); line-height: 1.5; }
+.session { min-height: 1.25rem; color: var(--paper); font-size: 0.9rem; }
+
+.door {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 16px;
+  padding: 16px;
+  margin: 12px 0;
+}
+.door h2 { margin: 0; font-size: 1.15rem; }
+.door p { color: var(--fog); line-height: 1.45; }
+.door form { display: grid; gap: 10px; }
+label { display: grid; gap: 6px; font-size: 0.85rem; }
+input {
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--paper);
+  padding: 0 12px;
+  font: inherit;
+}
+.row { display: flex; flex-wrap: wrap; gap: 8px; }
+button, .link {
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--paper);
+  padding: 0 16px;
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+button.primary { background: var(--signal); color: var(--signal-ink); border-color: transparent; font-weight: 650; }
+button:disabled, .link.locked { opacity: 0.45; pointer-events: none; }
+.missing { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.75rem; color: var(--fog); }
+.error { color: #ffb4a8; font-size: 0.85rem; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }

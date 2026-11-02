@@ -1,0 +1,23 @@
+[package]
+name = "wellux-shell"
+description = "Local Wellux shell. The UI is drawn from what is connected."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "wellux-shell"
+path = "src/main.rs"
+
+[dependencies]
+agent-core = { path = "../agent-core" }
+axum = "0.8"
+base64 = "0.22"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+uuid = { version = "1", features = ["v4"] }

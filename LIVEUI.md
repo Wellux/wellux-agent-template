@@ -1,42 +1,11 @@
-# LiveUI Integration
+# Live UI
 
-## Leptos Path (recommended for pure Rust)
+The base package ships in [`ui/`](ui). `make shell` serves it on `127.0.0.1:8787`.
 
-Use **detaxine-ui** or **leptos-shadcn-ui** for production components:
+The page does not contain a card for Supabase, PayPal or OpenAI. It asks `/api/surface` and draws whatever that list contains. Connect a door by filling `.env`. The card unlocks. Leave the keys empty and the card says what is missing.
 
-```bash
-# Add to leptos-frontend/Cargo.toml
-detaxine-ui = "0.8"
-# or
-leptos-shadcn-ui = "0.7"
-```
+Change the look in `ui/theme.css`. Replace `ui/app.js` if you want another renderer. Add a door in `crates/shell/src/surface.rs` and it appears on the next load without an edit to the HTML.
 
-Example component structure:
-```
-crates/leptos-frontend/src/
-├── components/
-│   ├── ui/          # copied from registry
-│   ├── chat.rs      # live chat with streaming
-│   └── approval.rs  # tool approval dialogs
-└── app.rs
-```
+Tokens never return to the page except the short-lived Realtime secret, which the page keeps in memory and does not print. The ChatGPT refresh token is not stored. The service-role key is never read.
 
-## Svelte Path (fastest HMR)
-
-Use **shadcn-svelte**:
-
-```bash
-cd crates/tauri-app
-bunx shadcn-svelte@latest init
-bunx shadcn-svelte@latest add button dialog toast
-```
-
-## Live Rendering Features
-
-- Streaming token-by-token via ADK events
-- Tool approval dialogs (human-in-the-loop)
-- Session list with real-time updates
-- Computer-use screenshot preview
-- OpenTelemetry traces in debug panel
-- Engram memory graph visualization
-- Skills browser with progressive disclosure
+Svelte, Leptos and Tauri are still free to replace `ui/`. They should call the same routes. Do not grow a second policy next to `agent-core`.

@@ -1,4 +1,7 @@
-.PHONY: check test fmt personal business desktop skill doctor
+.PHONY: check test fmt personal business desktop skill doctor shell
+
+shell:
+	cargo run -p wellux-shell
 
 check:
 	cargo check --workspace --all-targets

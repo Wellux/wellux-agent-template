@@ -5,7 +5,10 @@ One page. If a promise is not in this list, it is not in the repo.
 | Path | Owns |
 |------|------|
 | `crates/agent-core/src/lib.rs` | Public surface. Frontends import from here only. |
-| `access.rs` | Which credentials may enter the browser. Tested. |
+| `access.rs` | Credential boundary and the door functions. Tested. |
+| `agent.rs` | `create_agent`, session id, approval on by default. |
+| `crates/shell` | Local UI. Loopback only. Cards from `surface.rs`. |
+| `ui/` | The base interface. Replace this folder to change the look. |
 | `docs/ACCESS.md` | Supabase, PayPal, ChatGPT sign-in, Realtime. |
 | `providers.rs` | Provider table. No HTTP. |
 | `guardrails.rs` | Redaction and the approval flag. |
