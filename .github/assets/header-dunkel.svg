@@ -1,68 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 520" role="img">
-  <title>Wellux Agent Native Project Template</title>
-  <defs>
-    <style>
-      .rise { animation: rise .7s cubic-bezier(.2,.8,.2,1) both; }
-      .flow { stroke-dasharray: 5 8; animation: flow 2.4s linear infinite; }
-      .glow { animation: glow 3.2s ease-in-out infinite; }
-      @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-      @keyframes flow { to { stroke-dashoffset: -52; } }
-      @keyframes glow { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
-      @media (prefers-reduced-motion: reduce) {
-        .rise, .flow, .glow { animation: none; }
-      }
-    </style>
-  </defs>
-  <rect width="1280" height="520" rx="28" fill="#07141C"/>
-  <g stroke="#14323C" stroke-width="1" fill="none">
-    <path d="M0 80 H1280 M0 160 H1280 M0 240 H1280 M0 320 H1280 M0 400 H1280"/>
-    <path d="M160 0 V520 M320 0 V520 M480 0 V520 M640 0 V520 M800 0 V520 M960 0 V520 M1120 0 V520"/>
-  </g>
-  <g class="rise">
-    <polygon points="72,78 84,85 84,99 72,106 60,99 60,85" fill="#3EC4E0"/>
-    <text x="96" y="100" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="650" letter-spacing="3" fill="#8EACB8">WELLUX</text>
-  </g>
-  <text class="rise" x="64" y="188" font-family="ui-sans-serif, system-ui, sans-serif" font-size="62" font-weight="680" fill="#E7F1F4" style="animation-delay:.06s">Agent Native</text>
-  <text class="rise" x="64" y="258" font-family="ui-sans-serif, system-ui, sans-serif" font-size="62" font-weight="680" fill="#E7F1F4" style="animation-delay:.12s">Project Template</text>
-  <text class="rise" x="64" y="314" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" fill="#8EACB8" style="animation-delay:.2s">Shared Rust core · Engram · Skills · Guardrails</text>
-  <text class="rise" x="64" y="344" font-family="ui-sans-serif, system-ui, sans-serif" font-size="20" fill="#8EACB8" style="animation-delay:.24s">OpenTelemetry · Native VMs · OrcaRouter</text>
-  <g class="rise" style="animation-delay:.32s">
-    <rect x="64" y="388" width="148" height="40" rx="20" fill="#3EC4E0"/>
-    <text x="86" y="414" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="700" fill="#062028">60 SECONDS</text>
-    <text x="228" y="414" font-family="ui-monospace, monospace" font-size="14" fill="#8EACB8">make personal</text>
-  </g>
-  <rect x="760" y="64" width="456" height="392" rx="22" fill="#0D1C26" stroke="#1D3C4A"/>
-  <line class="flow" x1="804" y1="108" x2="804" y2="412" stroke="#3EC4E0" stroke-width="2"/>
-  <g font-family="ui-monospace, monospace" font-size="15">
-    <g class="rise" style="animation-delay:.15s">
-      <circle class="glow" cx="804" cy="118" r="6" fill="#3EC4E0"/>
-      <text x="828" y="114" fill="#8EACB8">01</text>
-      <text x="868" y="114" fill="#E7F1F4">CORE</text>
-      <text x="980" y="114" fill="#8EACB8">shared rust</text>
-    </g>
-    <g class="rise" style="animation-delay:.22s">
-      <circle class="glow" cx="804" cy="186" r="6" fill="#7CCBEB"/>
-      <text x="828" y="182" fill="#8EACB8">02</text>
-      <text x="868" y="182" fill="#E7F1F4">BRAIN</text>
-      <text x="980" y="182" fill="#8EACB8">engram</text>
-    </g>
-    <g class="rise" style="animation-delay:.29s">
-      <circle class="glow" cx="804" cy="254" r="6" fill="#3EC4E0"/>
-      <text x="828" y="250" fill="#8EACB8">03</text>
-      <text x="868" y="250" fill="#E7F1F4">SKILL</text>
-      <text x="980" y="250" fill="#8EACB8">SKILL.md</text>
-    </g>
-    <g class="rise" style="animation-delay:.36s">
-      <circle class="glow" cx="804" cy="322" r="6" fill="#7CCBEB"/>
-      <text x="828" y="318" fill="#8EACB8">04</text>
-      <text x="868" y="318" fill="#E7F1F4">GUARD</text>
-      <text x="980" y="318" fill="#8EACB8">approval</text>
-    </g>
-    <g class="rise" style="animation-delay:.43s">
-      <circle class="glow" cx="804" cy="390" r="6" fill="#3EC4E0"/>
-      <text x="828" y="386" fill="#8EACB8">05</text>
-      <text x="868" y="386" fill="#E7F1F4">VM</text>
-      <text x="980" y="386" fill="#8EACB8">microvm</text>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640" role="img">
+<title>Wellux agent template. Compiles before it promises.</title>
+<defs>
+<style>
+  .flow { stroke-dasharray: 5 9; animation: flow 2.8s linear infinite; }
+  .blink { animation: blink 1.15s steps(1) infinite; }
+  .pulse { animation: pulse 2.8s ease-in-out infinite; }
+  @keyframes flow { to { stroke-dashoffset: -56; } }
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes pulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .flow, .blink, .pulse { animation: none; } }
+</style>
+
+<linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#3EC4E0" stop-opacity=".16"/>
+  <stop offset=".55" stop-color="#3EC4E0" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<rect width="1280" height="640" fill="#07141C"/>
+
+<rect width="1280" height="640" fill="url(#wash)"/>
+<g stroke="#14323C" stroke-width="1" fill="none" opacity=".9">
+  <path d="M0 80H1280M0 160H1280M0 240H1280M0 320H1280M0 400H1280M0 480H1280M0 560H1280"/>
+  <path d="M80 0V640M160 0V640M240 0V640M320 0V640M400 0V640M480 0V640M560 0V640M640 0V640M720 0V640M800 0V640M880 0V640M960 0V640M1040 0V640M1120 0V640M1200 0V640"/>
+</g>
+<polygon points="72,62 86,70 86,86 72,94 58,86 58,70" fill="#3EC4E0"/>
+<text x="100" y="86" font-family="ui-sans-serif,system-ui,sans-serif" font-size="15" font-weight="650" letter-spacing="3.2" fill="#8EACB8">WELLUX  ·  AGENT TEMPLATE</text>
+<text x="64" y="210" font-family="ui-sans-serif,system-ui,sans-serif" font-size="84" font-weight="680" fill="#E7F1F4">Compiles</text>
+<text x="64" y="300" font-family="ui-sans-serif,system-ui,sans-serif" font-size="84" font-weight="680" fill="#E7F1F4">before it</text>
+<text x="64" y="390" font-family="ui-sans-serif,system-ui,sans-serif" font-size="84" font-weight="680" fill="#E7F1F4">promises.</text>
+<text x="68" y="452" font-family="ui-sans-serif,system-ui,sans-serif" font-size="22" fill="#8EACB8">One core. Three profiles. Doors stay shut until the keys exist.</text>
+<text x="68" y="560" font-family="ui-monospace,monospace" font-size="15" letter-spacing="1.4" fill="#8EACB8">RUST 1.80   ·   TESTS OFFLINE   ·   MIT OR APACHE-2.0</text>
+<rect x="760" y="120" width="456" height="420" rx="24" fill="#0D1C26" stroke="#1D3C4A"/>
+<line class="flow" x1="812" y1="168" x2="812" y2="492" stroke="#3EC4E0" stroke-width="1.5">
+  <animate attributeName="stroke-dashoffset" from="0" to="-56" dur="2.8s" repeatCount="indefinite"/>
+</line>
+<g font-family="ui-monospace,monospace" font-size="16">
+  <g><circle class="pulse" cx="812" cy="176" r="5" fill="#3EC4E0"/><text x="840" y="172" fill="#8EACB8">01</text><text x="888" y="172" fill="#E7F1F4">CORE</text><text x="1040" y="172" fill="#8EACB8">rust</text></g>
+  <g><circle class="pulse" cx="812" cy="252" r="5" fill="#7CCBEB" style="animation-delay:.4s"/><text x="840" y="248" fill="#8EACB8">02</text><text x="888" y="248" fill="#E7F1F4">SKILL</text><text x="1040" y="248" fill="#8EACB8">SKILL.md</text></g>
+  <g><circle class="pulse" cx="812" cy="328" r="5" fill="#3EC4E0" style="animation-delay:.8s"/><text x="840" y="324" fill="#8EACB8">03</text><text x="888" y="324" fill="#E7F1F4">GUARD</text><text x="1040" y="324" fill="#8EACB8">approval</text></g>
+  <g><circle class="pulse" cx="812" cy="404" r="5" fill="#7CCBEB" style="animation-delay:1.2s"/><text x="840" y="400" fill="#8EACB8">04</text><text x="888" y="400" fill="#E7F1F4">DOOR</text><text x="1040" y="400" fill="#8EACB8">locked</text></g>
+  <g><circle class="pulse" cx="812" cy="480" r="5" fill="#3EC4E0" style="animation-delay:1.6s"/><text x="840" y="476" fill="#8EACB8">05</text><text x="888" y="476" fill="#E7F1F4">SHELL</text><text x="1040" y="476" fill="#8EACB8">ui/</text></g>
+</g>
+
 </svg>

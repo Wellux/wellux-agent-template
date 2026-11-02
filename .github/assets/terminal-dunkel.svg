@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 416" role="img">
+<title>make project points origin at your repo and does not push.</title>
+<defs>
+<style>
+  .flow { stroke-dasharray: 5 9; animation: flow 2.8s linear infinite; }
+  .blink { animation: blink 1.15s steps(1) infinite; }
+  .pulse { animation: pulse 2.8s ease-in-out infinite; }
+  @keyframes flow { to { stroke-dashoffset: -56; } }
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes pulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .flow, .blink, .pulse { animation: none; } }
+</style>
+
+<linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#3EC4E0" stop-opacity=".16"/>
+  <stop offset=".55" stop-color="#3EC4E0" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<rect width="1280" height="416" fill="#07141C"/>
+
+<rect x="48" y="28" width="1184" height="360" rx="22" fill="#0D1C26" stroke="#1D3C4A"/>
+<circle cx="84" cy="62" r="6" fill="#C4554A"/>
+<circle cx="106" cy="62" r="6" fill="#C9A227"/>
+<circle cx="128" cy="62" r="6" fill="#3E9B62"/>
+<text x="160" y="68" font-family="ui-monospace,monospace" font-size="13" fill="#8EACB8">wellux — project</text>
+<g font-family="ui-monospace,monospace" font-size="20">
+<text x="72" y="78" fill="#3EC4E0">$</text><text x="108" y="78" fill="#E7F1F4">make project NAME=my-agent</text><text x="72" y="118" fill="#8EACB8"> </text><text x="108" y="118" fill="#E7F1F4">REPO=https://github.com/you/my-agent</text><text x="72" y="178" fill="#3EC4E0">→</text><text x="108" y="178" fill="#E7F1F4">origin     you/my-agent</text><text x="72" y="214" fill="#3EC4E0">→</text><text x="108" y="214" fill="#E7F1F4">upstream   Wellux/wellux-agent-template</text><text x="72" y="250" fill="#3EC4E0">→</text><text x="108" y="250" fill="#E7F1F4">tests      green, offline</text><text x="72" y="286" fill="#3EC4E0">→</text><text x="108" y="286" fill="#E7F1F4">push       not until you say</text><rect class="blink" x="108" y="302" width="11" height="20" fill="#3EC4E0"><animate attributeName="opacity" values="1;0;1" dur="1.15s" repeatCount="indefinite"/></rect>
+</g>
+
+</svg>

@@ -1,32 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 260" role="img">
-  <title>Access: Supabase, PayPal, OpenAI</title>
-  <defs>
-    <style>
-      .flow { stroke-dasharray: 5 8; animation: flow 2.4s linear infinite; }
-      @keyframes flow { to { stroke-dashoffset: -52; } }
-      @media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
-    </style>
-  </defs>
-  <rect width="1280" height="260" rx="24" fill="#F3F7F8"/>
-  <line class="flow" x1="120" y1="48" x2="1160" y2="48" stroke="#0C7C9A" stroke-width="2"/>
-  <g font-family="ui-sans-serif, system-ui, sans-serif">
-    <g>
-      <rect x="48" y="72" width="360" height="148" rx="18" fill="#FFFFFF" stroke="#D0E0E6"/>
-      <text x="72" y="112" font-size="12" letter-spacing="2" fill="#4E6A76">LOGIN</text>
-      <text x="72" y="150" font-size="28" font-weight="680" fill="#102028">Supabase</text>
-      <text x="72" y="184" font-size="16" fill="#4E6A76">PKCE · RLS · no service role</text>
-    </g>
-    <g>
-      <rect x="460" y="72" width="360" height="148" rx="18" fill="#FFFFFF" stroke="#0C7C9A"/>
-      <text x="484" y="112" font-size="12" letter-spacing="2" fill="#0C7C9A">PAY</text>
-      <text x="484" y="150" font-size="28" font-weight="680" fill="#102028">PayPal</text>
-      <text x="484" y="184" font-size="16" fill="#4E6A76">server amount · signed webhook</text>
-    </g>
-    <g>
-      <rect x="872" y="72" width="360" height="148" rx="18" fill="#FFFFFF" stroke="#D0E0E6"/>
-      <text x="896" y="112" font-size="12" letter-spacing="2" fill="#4E6A76">MODEL</text>
-      <text x="896" y="150" font-size="28" font-weight="680" fill="#102028">OpenAI</text>
-      <text x="896" y="184" font-size="16" fill="#4E6A76">ChatGPT scope · ephemeral live</text>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" role="img">
+<title>Supabase, PayPal and OpenAI stay separate doors.</title>
+<defs>
+<style>
+  .flow { stroke-dasharray: 5 9; animation: flow 2.8s linear infinite; }
+  .blink { animation: blink 1.15s steps(1) infinite; }
+  .pulse { animation: pulse 2.8s ease-in-out infinite; }
+  @keyframes flow { to { stroke-dashoffset: -56; } }
+  @keyframes blink { 50% { opacity: 0; } }
+  @keyframes pulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .flow, .blink, .pulse { animation: none; } }
+</style>
+
+<linearGradient id="wash" x1="0" y1="0" x2="1" y2="1">
+  <stop offset="0" stop-color="#0C7490" stop-opacity=".16"/>
+  <stop offset=".55" stop-color="#0C7490" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<rect width="1280" height="360" fill="#F4F7F8"/>
+
+<rect x="48" y="78" width="384" height="250" rx="22" fill="#FFFFFF" stroke="#D3E1E6"/>
+<circle cx="96" cy="132" r="16" fill="none" stroke="#0C7490" stroke-width="1.5"/>
+<circle class="pulse" cx="96" cy="132" r="4" fill="#0C7490"/>
+<text x="126" y="138" font-family="ui-monospace,monospace" font-size="14" fill="#4C6872">01</text>
+<text x="80" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-size="32" font-weight="680" fill="#10242C">SUPABASE</text>
+<text x="80" y="236" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" fill="#4C6872">Mail and OAuth.</text>
+<text x="80" y="262" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" fill="#4C6872">Service role stays server-side.</text>
+
+
+<rect x="448" y="78" width="384" height="250" rx="22" fill="#FFFFFF" stroke="#D3E1E6"/>
+<circle cx="496" cy="132" r="16" fill="none" stroke="#0C7490" stroke-width="1.5"/>
+<circle class="pulse" cx="496" cy="132" r="4" fill="#0C7490"/>
+<text x="526" y="138" font-family="ui-monospace,monospace" font-size="14" fill="#4C6872">02</text>
+<text x="480" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-size="32" font-weight="680" fill="#10242C">PAYPAL</text>
+<text x="480" y="236" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" fill="#4C6872">Amount set here.</text>
+<text x="480" y="262" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" fill="#4C6872">Sandbox until a capture holds.</text>
+
+
+<rect x="848" y="78" width="384" height="250" rx="22" fill="#FFFFFF" stroke="#D3E1E6"/>
+<circle cx="896" cy="132" r="16" fill="none" stroke="#0C7490" stroke-width="1.5"/>
+<circle class="pulse" cx="896" cy="132" r="4" fill="#0C7490"/>
+<text x="926" y="138" font-family="ui-monospace,monospace" font-size="14" fill="#4C6872">03</text>
+<text x="880" y="196" font-family="ui-sans-serif,system-ui,sans-serif" font-size="32" font-weight="680" fill="#10242C">OPENAI</text>
+<text x="880" y="236" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" fill="#4C6872">ChatGPT is not a key.</text>
+<text x="880" y="262" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" fill="#4C6872">Live secret lasts minutes.</text>
+
 </svg>

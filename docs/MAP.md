@@ -22,7 +22,7 @@ One page. If a promise is not in this list, it is not in the repo.
 | `telemetry.rs` | OTel hook. |
 | `skills/_template/SKILL.md` | Stamp copied by `make skill`. |
 | `skills/wellux-desktop-agent/` | The shipped example skill. |
-| `.github/assets/*.svg` | README graphics. Dark and light. Motion degrades to a still layout. |
+| `.github/assets/*.svg` | README graphics. Dark and light. Motion is a line, text stays put. |
 | `.github/workflows/ci.yml` | Format, test, three profiles. |
 | `project.toml` | This checkout's name. Set once by `make project`. |
 | `.env.example` | Key names only. `.env` is gitignored. |

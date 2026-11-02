@@ -1,90 +1,90 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header-dunkel.svg">
-  <img alt="Wellux Agent Native Project Template. Shared Rust core, Engram, skills, guardrails, OpenTelemetry, native VMs, OrcaRouter. Start with make personal." src=".github/assets/header-hell.svg" width="100%">
+  <img alt="Wellux agent template. Compiles before it promises. One core, three profiles, doors that stay shut until the keys exist." src=".github/assets/header-hell.svg" width="100%">
 </picture>
 
-<p align="center">
-  <img alt="Rust" src="https://img.shields.io/badge/Rust-1.80+-1B8DBE?style=flat-square&logo=rust">
-  <img alt="CI" src="https://github.com/Wellux/wellux-agent-template/actions/workflows/ci.yml/badge.svg">
-  <img alt="License" src="https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-95969A?style=flat-square">
-</p>
-
-<h3 align="center">Wellux — the agent-native starter</h3>
+<h3 align="center">A template that compiles before it promises.</h3>
 
 <p align="center">
-  A project template that compiles before it promises.<br>
-  Shared Rust core · Engram second brain · Hermes-style skills · Guardrails · OpenTelemetry · Native VMs
+  <b>Give an agent the link. It names the project, keeps this repo as upstream, and does not push.</b><br>
+  One Rust core you own · three start profiles · a shell that draws only what is connected
 </p>
 
 <p align="center">
   <a href="https://well-ux.com"><b>well-ux.com</b></a> &nbsp;·&nbsp;
-  <a href="#start-in-60-seconds">60-second start</a> &nbsp;·&nbsp;
-  <a href="#start-a-project">Start a project</a> &nbsp;·&nbsp;
+  <a href="#start">Start</a> &nbsp;·&nbsp;
+  <a href="#give-it-to-an-agent">Agent</a> &nbsp;·&nbsp;
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
   <a href="#access">Access</a> &nbsp;·&nbsp;
-  <a href="#ten-next-moves">Ten next moves</a>
+  <a href="https://github.com/Wellux/wellux-agent-template/actions/workflows/ci.yml">CI</a>
 </p>
 
----
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/divider-dunkel.svg">
+  <img alt="" src=".github/assets/divider-hell.svg" width="100%">
+</picture>
 
-## Why this exists
+Most agent stacks rent you a cloud and call it a platform. This is the block you own. The policy lives in the core. The page only renders it. What is code, what is an interface, and what is still a recipe are labeled apart, so the first hour is not archaeology.
 
-Most agent stacks rent you someone else's cloud and then call it a platform.
-Wellux is the block you own: one Rust core, three start profiles, and a shell you can swap.
+## Start
 
-Local first. The policy lives in the core, not in a frontend. What is code, what is an interface, and what is still a recipe are labeled separately — so the first hour is not archaeology.
+Rust 1.80 or newer. Nothing else is required to prove the core.
 
-## Start in 60 seconds
-
-You need Rust 1.80+. Engram, Quicksand and API keys are optional until the profile you pick asks for them.
+<table>
+  <tr>
+    <td width="58%" valign="top">
 
 ```bash
 git clone https://github.com/Wellux/wellux-agent-template.git
 cd wellux-agent-template
-cp .env.example .env
-make doctor
-make project NAME=my-agent
-make personal     # or: make business / make desktop
+make project NAME=my-agent REPO=https://github.com/OWNER/my-agent
 make test
+make personal    # or: make business / make desktop
 make shell
 ```
 
-| Profile | You are building | Command | Features |
-|---------|------------------|---------|----------|
-| Personal | A local companion with a second brain | `make personal` | `memory-engram` |
-| Business | Traces, MCP, a MicroVM for untrusted code | `make business` | `otel,mcp,memory-engram,sandbox-microvm` |
-| Desktop | Computer use, with a human in the loop | `make desktop` | `computer-use,sandbox-microvm,sandbox-quicksand,memory-engram` |
+| Profile | You are building | Command |
+|---------|------------------|---------|
+| Personal | A local companion with a second brain | `make personal` |
+| Business | Traces, MCP, a MicroVM for untrusted code | `make business` |
+| Desktop | Computer use, with a human in the loop | `make desktop` |
 
-New skill, same shape every time:
+    </td>
+    <td width="42%" valign="top">
+      <picture>
+        <source media="(prefers-color-scheme: dark)" srcset=".github/assets/terminal-dunkel.svg">
+        <img alt="The project command sets origin to your repository, keeps this template as upstream, reports tests green, and does not push." src=".github/assets/terminal-hell.svg" width="100%">
+      </picture>
+    </td>
+  </tr>
+</table>
 
-```bash
-make skill NAME=release-notes
+`make test` is the gate. If it is red, stop. Engram, Quicksand and API keys are optional until the profile you pick asks for them. The written path is [`docs/START.md`](docs/START.md).
+
+## Give it to an agent
+
+Paste this. Replace the name and the destination. The destination is an empty repository you own, not this template. The agent follows [`AGENTS.md`](AGENTS.md).
+
+```text
+Create a project from this template. Follow AGENTS.md.
+
+Template: https://github.com/Wellux/wellux-agent-template
+Name: my-agent
+Destination: https://github.com/OWNER/my-agent
+
+Do not push. Do not commit .env. Stop if make test fails.
 ```
 
-Details: [`docs/START.md`](docs/START.md).
-
-## Start a project
-
-On GitHub, use **Use this template**. Or paste the link to an agent. [AGENTS.md](AGENTS.md) is the procedure it must follow, and the same text is what Claude and Copilot are pointed at.
-
-```bash
-make project NAME=my-agent REPO=https://github.com/OWNER/my-agent
-```
-
-That writes `project.toml`, sets the agent name, stamps the first skill, and points `origin` at the destination repo. This template stays as `upstream`. Nothing is pushed. A second run is refused. The template URL is rejected as a destination.
-
-The paste block, in English and German, is in [`docs/PROJECT.md`](docs/PROJECT.md).
+`make project` writes `project.toml`, stamps the first skill, points `origin` at your repo and keeps this template as `upstream`. It refuses to run twice. It refuses this template's own URL as a destination. Full walkthrough: [`docs/PROJECT.md`](docs/PROJECT.md).
 
 ## Architecture
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/arch-dunkel.svg">
-  <img alt="Flow from Svelte, Leptos and Tauri into the shared Rust core, then agent-core, then OrcaRouter, Engram and Ollama." src=".github/assets/arch-hell.svg" width="100%">
+  <img alt="Four rooms in one direction: shell, core, doors, edge. The shell renders. The core decides." src=".github/assets/arch-hell.svg" width="100%">
 </picture>
 
-The shell is thin on purpose. Sessions, skills, guardrails and the provider table sit in `crates/agent-core`. Frontends should render events, not invent policy.
-
-The connectors animate when the SVG is opened directly. If a viewer freezes motion, the labels still read in order: shell, core, agent, edge.
+The line moves when the viewer allows it. If it doesn't, the labels still read in order: shell, core, doors, edge.
 
 ## What is actually in the box
 
@@ -101,7 +101,7 @@ The connectors animate when the SVG is opened directly. If a viewer freezes moti
 | Base UI | `ui/`, `crates/shell` | `make shell` draws cards from `/api/surface`. Replace `ui/` to reskin |
 | Svelte / Leptos / Tauri | [`LIVEUI.md`](LIVEUI.md) | Optional. Not required to run |
 | CI | `.github/workflows/ci.yml` | `fmt`, tests, all three profiles |
-| Access boundary | `access.rs`, [`docs/ACCESS.md`](docs/ACCESS.md) | Tested: secrets that must not reach the browser |
+| Access boundary | `access.rs`, [`docs/ACCESS.md`](docs/ACCESS.md) | Tested. Secrets that must not reach the browser |
 
 OrcaRouter base URL, when you wire a client: `https://api.orcarouter.ai/v1`.
 
@@ -116,19 +116,11 @@ Login, payment, and the model are separate doors.
 
 - **Supabase** — email and OAuth (PKCE). Publishable key in the browser. Service role on the server. RLS on every table.
 - **PayPal** — Orders API v2. The server sets the amount, creates the order, captures it, and verifies the webhook. The button only carries the client id.
-- **OpenAI** — Continue with ChatGPT is OAuth plus PKCE against `auth.openai.com`. Plan usage counts only when the scope `chatgpt.tokens.use.direct` was actually granted. That login is not an API key. The live Realtime API in the browser receives a short-lived secret from `POST /v1/realtime/client_secrets`. `OPENAI_API_KEY` stays on the server.
+- **OpenAI** — Continue with ChatGPT is OAuth plus PKCE against `auth.openai.com`. Plan usage counts only when the scope `chatgpt.tokens.use.direct` was actually granted. That login is not an API key. The live API receives a short-lived secret. `OPENAI_API_KEY` stays on the server.
 
-The full contract, endpoints, and the order of setup are in [`docs/ACCESS.md`](docs/ACCESS.md). The calls themselves are in the core and covered by tests: `pkce_s256`, `redirect_allowed`, `paypal_order`, `chatgpt_authorize_url`, `plan_usage_granted`, `browser_realtime_secret`. None of them open a socket.
+The calls are in the core and covered by tests: `pkce_s256`, `redirect_allowed`, `paypal_order`, `chatgpt_authorize_url`, `plan_usage_granted`, `browser_realtime_secret`. None of them open a socket. Setup order: [`docs/ACCESS.md`](docs/ACCESS.md).
 
-## Shell
-
-```bash
-make shell
-```
-
-That serves the base UI from [`ui/`](ui) on `127.0.0.1:8787`. The page draws one card per door returned by `/api/surface`. A door is locked until the keys in `.env` are present. PayPal creates a sandbox order and captures it when the buyer returns. ChatGPT sign-in is the local OAuth flow. The live API mints a short-lived secret and the page does not print it.
-
-Replace `ui/` to change the interface. The routes stay. See [`LIVEUI.md`](LIVEUI.md).
+`make shell` serves [`ui/`](ui) on your machine. The page draws one card per door from `/api/surface`. A door is locked until its keys are in `.env`. Replace `ui/` to change the look. The routes stay.
 
 ## Sandboxes
 
@@ -137,55 +129,44 @@ Replace `ui/` to change the interface. The routes stay. See [`LIVEUI.md`](LIVEUI
   <img alt="Three sandboxes: WASM when there is no guest OS, MicroVM as the default for untrusted code, Quicksand for a full Linux desktop." src=".github/assets/sandbox-hell.svg" width="100%">
 </picture>
 
-`SandboxManager::recommend` picks the smallest runtime that fits: Quicksand only for a desktop, MicroVM for untrusted code, WASM otherwise.
+`SandboxManager::recommend` picks the smallest runtime that fits.
+
+## How a project is built here
+
+| | Principle | In practice |
+|:--|:---|:---|
+| 01 | **Mechanics deterministic, cognition flexible** | The core and the tests do the routine. The model does the thinking. |
+| 02 | **Your data is yours** | Secrets stay in `.env`. The service role, the PayPal secret and the API key never enter `ui/`. |
+| 03 | **The door draws itself** | `/api/surface` lists what is connected. The page does not invent a card. |
+| 04 | **An agent gets a link, not a tour** | [`AGENTS.md`](AGENTS.md) is the whole procedure. It does not push. |
+| 05 | **A red test is a stop sign** | `make test` needs no keys. Do not continue past it. |
 
 ## Map
 
 ```text
+AGENTS.md             what an agent runs when handed the GitHub link
 crates/agent-core     shared core and tests
 crates/shell          local UI, loopback only
 ui/                   the base interface, replaceable
-project.toml          your project's name, set by make project
-.env.example          every key name, no values
-skills/_template      stamp for make skill
-skills/wellux-desktop-agent
-docs/START.md         the 60-second path, written out
-docs/PROJECT.md       how a third party starts their own project
+project.toml          the project name, set once
+docs/PROJECT.md       the walkthrough
 docs/MAP.md           which file owns which promise
-docs/NEXT.md          ten moves that are not in the repo yet
-docs/ACCESS.md        Supabase, PayPal, ChatGPT, Realtime
-.github/assets        header, architecture, access, sandbox — light and dark
 ```
 
-See [`docs/MAP.md`](docs/MAP.md).
+## Not built yet
 
-## Ten blocks in this template
+Each one docks onto a seam that already exists. Notes in [`docs/NEXT.md`](docs/NEXT.md).
 
-1. Three start profiles, one Makefile.
-2. A core that `cargo test` can prove, offline.
-3. An honest matrix instead of a quick start that pointed at a missing `crates/tauri-app`.
-4. CI on every push.
-5. `make skill NAME=` from `skills/_template`.
-6. Guardrails with tests.
-7. A provider router, OrcaRouter recommended.
-8. SVG motion for header, architecture and sandbox. Still readable when still.
-9. A one-page repo map.
-10. Template hygiene: licenses, `rust-toolchain`, `make doctor`, issue template.
-
-## Ten next moves
-
-Not built. Each one docks onto a seam that already exists. Full notes in [`docs/NEXT.md`](docs/NEXT.md).
-
-1. **Tauri shell as a crate** — chat, streaming, the approval dialog. Today that is `LIVEUI.md`.
-2. **One `UiEvent` for Svelte and Leptos** — so approval logic cannot drift across two UIs.
-3. **`make doctor` talks to Engram** — version plus an MCP handshake, not only "binary on PATH".
-4. **Approval queue** — computer-use blocks until a human says yes. The flag is already set.
-5. **OTel without a collector** — last 20 spans in a local debug panel.
-6. **`xtask new-app`** — rename crate, bundle id and window title in one command.
-7. **`sandbox.toml`** — image and memory in one file, flags only select the profile.
-8. **Signed skills** — the loader refuses a `SKILL.md` that is not on the trust list.
-9. **Ten golden tasks** — `evals/` for guardrails and skills, still offline in CI.
-10. **A public companion repo** — one product that uses only this template, so the second reader sees a living app.
+1. **Tauri shell as a crate** — chat, streaming, the approval dialog.
+2. **One `UiEvent`** — so Svelte and Leptos cannot drift.
+3. **Doctor that talks to Engram** — a handshake, not only "binary on PATH".
+4. **Approval queue** — computer use already flags itself. The queue is the missing piece.
+5. **Traces without a collector** — the last twenty spans, locally.
+6. **Bundle id** — `make project` names the checkout. A desktop bundle id comes when that crate exists.
+7. **`sandbox.toml`** — image and memory in one file.
+8. **Signed skills** — the loader refuses a file that is not on the trust list.
+9. **Ten golden tasks** — still offline, still in CI.
+10. **One public product** — a companion repo that uses only this template.
 
 ## License
 
