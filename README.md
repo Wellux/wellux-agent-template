@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header-dunkel.svg">
-  <img alt="wellux-agent-template: Shared Rust core, Engram second brain, Hermes skills, guardrails, OpenTelemetry, native VMs and OrcaRouter." src=".github/assets/header-hell.svg" width="100%">
+  <img alt="Wellux Agent Native Project Template: Shared Rust core, Engram second brain, Hermes skills, guardrails, OpenTelemetry, native VMs and OrcaRouter." src=".github/assets/header-hell.svg" width="100%">
 </picture>
 
 <p align="center">
@@ -10,11 +10,11 @@
   <img alt="License" src="https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-95969A?style=flat-square">
 </p>
 
-<h3 align="center">Agent-native applications you own.</h3>
+<h3 align="center">Wellux Agent Native Project Template</h3>
 
 <p align="center">
-  Shared Rust core that scales from desktop to mobile and embedded.<br>
-  Engram second brain · Hermes-style skills · Guardrails · OpenTelemetry · Native VMs
+  Build private and business agent-native applications that own their intelligence.<br>
+  Shared Rust core · Engram second brain · Hermes-style skills · Guardrails · OpenTelemetry · Native VMs
 </p>
 
 <p align="center">
