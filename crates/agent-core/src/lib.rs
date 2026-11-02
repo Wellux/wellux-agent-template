@@ -20,7 +20,12 @@ pub mod skills;
 pub mod telemetry;
 pub mod tools;
 
-pub use access::{boundaries, may_enter_browser, Boundary, Exposure};
+pub use access::{
+    boundaries, browser_realtime_secret, chatgpt_authorize_url, may_enter_browser, paypal_order,
+    pkce_s256, plan_usage_granted, redirect_allowed, AccessError, Boundary, ChatGptLogin, Exposure,
+    PaypalOrder,
+};
+pub use agent::{create_agent, AgentSession};
 pub use computer_use::computer_use_tools;
 pub use guardrails::{apply_guardrails, apply_guardrails_for, GuardrailOutcome};
 pub use providers::{create_provider, ProviderEndpoint, ProviderKind};

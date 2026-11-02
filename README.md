@@ -102,7 +102,7 @@ Login, payment, and the model are separate doors.
 - **PayPal** — Orders API v2. The server sets the amount, creates the order, captures it, and verifies the webhook. The button only carries the client id.
 - **OpenAI** — Continue with ChatGPT is OAuth plus PKCE against `auth.openai.com`. Plan usage counts only when the scope `chatgpt.tokens.use.direct` was actually granted. That login is not an API key. The live Realtime API in the browser receives a short-lived secret from `POST /v1/realtime/client_secrets`. `OPENAI_API_KEY` stays on the server.
 
-The full contract, endpoints, and the order of setup are in [`docs/ACCESS.md`](docs/ACCESS.md).
+The full contract, endpoints, and the order of setup are in [`docs/ACCESS.md`](docs/ACCESS.md). The calls themselves are in the core and covered by tests: `pkce_s256`, `redirect_allowed`, `paypal_order`, `chatgpt_authorize_url`, `plan_usage_granted`, `browser_realtime_secret`. None of them open a socket.
 
 ## Sandboxes
 

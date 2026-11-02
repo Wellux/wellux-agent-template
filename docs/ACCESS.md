@@ -2,7 +2,16 @@
 
 Three doors. None of them share a secret with the browser except a publishable id or a secret that dies with the session.
 
-`agent_core::access` is the checklist in code. `may_enter_browser` is tested. Wiring the real HTTP calls is your shell; this file is the contract.
+`agent_core::access` is the checklist and the door functions. They do not call the network. A shell fills in the HTTP.
+
+| Function | Door |
+|----------|------|
+| `pkce_s256` | Supabase OAuth and ChatGPT. S256, RFC 7636 vector is tested. |
+| `redirect_allowed` | Exact redirect. A `*` in the allow-list fails closed. |
+| `paypal_order` | Amount in minor units. Zero is rejected. `body()` is the Orders API JSON. |
+| `chatgpt_authorize_url` | PKCE authorize URL. `dynamic_agent_client` only on the first registration. |
+| `plan_usage_granted` | True only when `chatgpt.tokens.use.direct` is its own scope. |
+| `browser_realtime_secret` | Accepts the ephemeral secret. Rejects an `sk-` or `xai-` key. |
 
 ## Supabase — user login and OAuth
 
