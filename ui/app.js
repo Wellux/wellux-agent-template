@@ -138,6 +138,14 @@ async function main() {
     mark.textContent = "Shell";
     brand.append(mark);
   }
+  const repoOk = /^https:\/\/github\.com\/[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(surface.repo || "");
+  if (repoOk) {
+    const link = document.createElement("a");
+    link.href = surface.repo;
+    link.textContent = surface.repo.replace("https://github.com/", "");
+    link.className = "notice";
+    document.querySelector("#notice").prepend(link);
+  }
   const root = document.querySelector("#doors");
   root.replaceChildren(...surface.doors.map(renderDoor));
 }

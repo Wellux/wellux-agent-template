@@ -1,49 +1,66 @@
 # Start a project
 
-This repository is a template. You do not develop inside it as "Wellux". You copy it once and give the copy your name.
+You can hand the GitHub link to an agent. The agent reads [AGENTS.md](../AGENTS.md) and runs the commands. You can also run them yourself.
+
+## Give this to an agent
+
+Paste this. Replace the name and the destination. The destination is an empty repository you own, not this template.
+
+```text
+Create a project from this template. Follow AGENTS.md.
+
+Template: https://github.com/Wellux/wellux-agent-template
+Name: my-agent
+Destination: https://github.com/OWNER/my-agent
+
+Do not push. Do not commit .env. Stop if make test fails.
+```
+
+German, same contract:
+
+```text
+Lege ein Projekt aus dieser Vorlage an. Folge AGENTS.md.
+
+Vorlage: https://github.com/Wellux/wellux-agent-template
+Name: mein-agent
+Ziel-Repo: https://github.com/OWNER/mein-agent
+
+Nicht pushen. .env nicht committen. Stoppe, wenn make test rot ist.
+```
+
+If you only have the destination link, omit the name. `make project` takes it from the repo: `https://github.com/OWNER/mein-agent` becomes `mein-agent`.
+
+The script refuses the template URL as a destination, so an agent cannot point `origin` back at this repository and push over it.
 
 ## 1. Take a copy
 
-On GitHub, open the repository and choose **Use this template**, then **Create a new repository**. That gives you your own history, not a fork you have to keep in sync.
+On GitHub, choose **Use this template**, then **Create a new repository**.
 
-If you cannot use that button:
+Or tell the agent the two links above and let it clone.
 
-```bash
-git clone https://github.com/Wellux/wellux-agent-template.git my-agent
-cd my-agent
-rm -rf .git
-git init
-```
-
-## 2. Name it
+## 2. Name it and point it
 
 ```bash
-cp .env.example .env
-make project NAME=my-agent
+make project NAME=my-agent REPO=https://github.com/OWNER/my-agent
 ```
 
-`make project` does four things and then refuses to run again:
+This writes `project.toml`, sets `WELLUX_AGENT_NAME`, stamps `skills/my-agent/SKILL.md`, and — when the checkout is a git repo whose `origin` is still this template — renames that remote to `upstream` and sets `origin` to your repo.
 
-- writes your name into `project.toml`
-- copies `.env.example` to `.env` if you skipped that
-- sets `WELLUX_AGENT_NAME`
-- stamps `skills/my-agent/SKILL.md` from `skills/_template`
+It does not push. It refuses to run a second time.
 
-The name is kebab-case: lowercase letters, digits, hyphens. `My Agent` is rejected. `my-agent` is accepted.
+`https://github.com/owner/name` and `git@github.com:owner/name.git` are accepted. Anything else is rejected.
 
 ## 3. Prove it, then pick a profile
 
 ```bash
-make doctor
 make test
+make doctor
 make personal      # companion, local memory
 # make business    # traces, MCP, a MicroVM for untrusted code
 # make desktop     # computer use, a person must approve
 ```
 
-`make test` needs no keys and no network after the first Cargo fetch. A red test means you do not have a starting point yet. Do not continue past it.
-
-`make doctor` tells you what is missing. Engram and Quicksand are optional. The core compiles without them.
+`make test` needs no keys. A red test means stop.
 
 ## 4. Open the shell
 
@@ -51,15 +68,13 @@ make personal      # companion, local memory
 make shell
 ```
 
-The page draws one card per door. A door stays locked until the matching keys in `.env` are filled. Nothing is billed and nobody is signed in until you fill those keys and press the button.
+The page draws one card per door and shows the destination repo when `project.toml` has one. A door stays locked until its keys in `.env` are filled.
 
 | Door | You fill | Then |
 |------|----------|------|
 | Supabase | `SUPABASE_URL`, `SUPABASE_PUBLISHABLE_KEY` | Email login, or GitHub / Google |
 | PayPal | `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` | Sandbox checkout. Leave `PAYPAL_ENV=sandbox` |
 | OpenAI | nothing, for the first ChatGPT login | Live API needs `OPENAI_API_KEY` or a granted plan scope |
-
-The service-role key, the PayPal secret and `OPENAI_API_KEY` stay in `.env`. They are gitignored. Do not paste them into `ui/`.
 
 ## 5. What you change, and what you leave
 
@@ -75,8 +90,6 @@ A new skill, after the first one:
 ```bash
 make skill NAME=release-notes
 ```
-
-A new door: add it in `crates/shell/src/surface.rs`. Reload the shell. The page picks it up because it renders `/api/surface`, not a card you drew by hand.
 
 A different look: replace the `ui/` folder. Keep calling the same routes.
 

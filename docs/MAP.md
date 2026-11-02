@@ -26,6 +26,8 @@ One page. If a promise is not in this list, it is not in the repo.
 | `.github/workflows/ci.yml` | Format, test, three profiles. |
 | `project.toml` | This checkout's name. Set once by `make project`. |
 | `.env.example` | Key names only. `.env` is gitignored. |
+| `AGENTS.md` | What an agent runs when someone pastes the GitHub link. |
+| `CLAUDE.md` | Pointer. Claude follows `AGENTS.md`. |
 | `docs/START.md` | The 60-second path. |
 | `docs/PROJECT.md` | How a third party starts their own project. |
 | `docs/NEXT.md` | Work that is intentionally absent. |

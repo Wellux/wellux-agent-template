@@ -141,6 +141,7 @@ async fn api_surface(State(app): State<Arc<App>>) -> Json<surface::Surface> {
     let manifest = fs::read_to_string("project.toml").unwrap_or_default();
     Json(surface::surface(
         &surface::project_name(&manifest),
+        &surface::project_repo(&manifest),
         &app.env,
     ))
 }

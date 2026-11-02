@@ -65,13 +65,15 @@ Details: [`docs/START.md`](docs/START.md).
 
 ## Start a project
 
-This is a template. On GitHub, use **Use this template** so the new repository is yours. Then name the checkout once:
+On GitHub, use **Use this template**. Or paste the link to an agent. [AGENTS.md](AGENTS.md) is the procedure it must follow, and the same text is what Claude and Copilot are pointed at.
 
 ```bash
-make project NAME=my-agent
+make project NAME=my-agent REPO=https://github.com/OWNER/my-agent
 ```
 
-That writes `project.toml`, sets `WELLUX_AGENT_NAME`, and stamps `skills/my-agent/SKILL.md`. It refuses a second run, so a later skill cannot wipe the name. The walkthrough for someone who has never seen the repo is [`docs/PROJECT.md`](docs/PROJECT.md).
+That writes `project.toml`, sets the agent name, stamps the first skill, and points `origin` at the destination repo. This template stays as `upstream`. Nothing is pushed. A second run is refused. The template URL is rejected as a destination.
+
+The paste block, in English and German, is in [`docs/PROJECT.md`](docs/PROJECT.md).
 
 ## Architecture
 

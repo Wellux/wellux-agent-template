@@ -43,8 +43,15 @@ else
   ok ".env is not tracked"
 fi
 
+if [[ -f project.toml ]] && grep -q 'name = "wellux-agent-template"' project.toml; then
+  miss "unnamed project  →  make project NAME=my-agent REPO=https://github.com/you/my-agent"
+else
+  ok "project.toml"
+fi
+
 echo
-echo "New:       make project NAME=my-agent"
+echo "Agent:     paste the repo link. The agent follows AGENTS.md"
+echo "New:       make project NAME=my-agent REPO=https://github.com/you/my-agent"
 echo "Profiles:  make personal | make business | make desktop"
 echo "Shell:     make shell     →  http://127.0.0.1:8787"
 echo "Access:    docs/ACCESS.md  (Supabase, PayPal, ChatGPT, Realtime)"

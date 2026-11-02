@@ -34,6 +34,7 @@ pub struct Door {
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 pub struct Surface {
     pub project: String,
+    pub repo: String,
     pub doors: Vec<Door>,
 }
 
@@ -55,9 +56,48 @@ pub fn project_name(toml: &str) -> String {
     "wellux".to_string()
 }
 
-pub fn surface(project: &str, env: &BTreeMap<String, String>) -> Surface {
+pub fn project_repo(toml: &str) -> String {
+    for line in toml.lines() {
+        let line = line.trim();
+        let Some(rest) = line.strip_prefix("repo") else {
+            continue;
+        };
+        let rest = rest.trim().trim_start_matches('=').trim().trim_matches('"');
+        if is_github_repo(rest) {
+            return rest.to_string();
+        }
+    }
+    String::new()
+}
+
+fn is_github_repo(value: &str) -> bool {
+    let Some(rest) = value.strip_prefix("https://github.com/") else {
+        return false;
+    };
+    let mut parts = rest.split('/');
+    let owner = parts.next().unwrap_or("");
+    let name = parts.next().unwrap_or("");
+    parts.next().is_none()
+        && !owner.is_empty()
+        && !name.is_empty()
+        && owner
+            .chars()
+            .all(|c| c.is_ascii_alphanumeric() || c == '-' || c == '_' || c == '.')
+        && name
+            .chars()
+            .all(|c| c.is_ascii_alphanumeric() || c == '-' || c == '_' || c == '.')
+        && !owner.starts_with('.')
+        && !name.starts_with('.')
+}
+
+pub fn surface(project: &str, repo: &str, env: &BTreeMap<String, String>) -> Surface {
     Surface {
         project: project.to_string(),
+        repo: if is_github_repo(repo) {
+            repo.to_string()
+        } else {
+            String::new()
+        },
         doors: vec![supabase(env), paypal(env), openai(env)],
     }
 }
@@ -251,13 +291,14 @@ mod tests {
 
     #[test]
     fn doors_follow_what_is_connected() {
-        let bare = surface("wellux", &env(&[]));
+        let bare = surface("wellux", "", &env(&[]));
         assert!(!bare.doors[0].connected);
         assert!(bare.doors[0].missing.contains(&"SUPABASE_URL"));
         assert!(!bare.doors[1].connected);
 
         let ready = surface(
             "wellux",
+            "",
             &env(&[
                 ("SUPABASE_URL", "https://example.supabase.co"),
                 ("SUPABASE_PUBLISHABLE_KEY", "sb_publishable_x"),
@@ -294,5 +335,10 @@ mod tests {
         assert_eq!(project_name("name = \"my-agent\"\n"), "my-agent");
         assert_eq!(project_name("name = \"no spaces\"\n"), "wellux");
         assert_eq!(project_name(""), "wellux");
+        assert_eq!(
+            project_repo("repo = \"https://github.com/acme/my-agent\"\n"),
+            "https://github.com/acme/my-agent"
+        );
+        assert_eq!(project_repo("repo = \"https://evil.example/x\"\n"), "");
     }
 }

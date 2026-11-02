@@ -1,8 +1,8 @@
 .PHONY: check test fmt personal business desktop skill doctor shell project
 
 project:
-	@test -n "$(NAME)" || (echo "Usage: make project NAME=my-agent" && exit 1)
-	@./scripts/new-project.sh "$(NAME)"
+	@if [ -z "$(NAME)" ] && [ -z "$(REPO)" ]; then echo "Usage: make project NAME=my-agent [REPO=https://github.com/owner/my-agent]"; exit 1; fi
+	@./scripts/new-project.sh "$(NAME)" "$(REPO)"
 
 shell:
 	cargo run -p wellux-shell
