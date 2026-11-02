@@ -1,0 +1,25 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  rust:
+    name: check and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - name: format
+        run: cargo fmt --all -- --check
+      - name: test
+        run: cargo test --workspace --all-targets
+      - name: feature profiles compile
+        run: |
+          cargo check -p agent-core --features memory-engram
+          cargo check -p agent-core --features otel,mcp,memory-engram,sandbox-microvm
+          cargo check -p agent-core --features computer-use,sandbox-microvm,sandbox-quicksand,memory-engram

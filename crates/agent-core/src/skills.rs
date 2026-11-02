@@ -5,7 +5,6 @@
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::path::{Path, PathBuf};
-use std::sync::Arc;
 use tokio::fs;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -64,11 +63,15 @@ impl SkillsLoader {
     async fn parse_meta(&self, path: &Path) -> anyhow::Result<SkillMeta> {
         let content = fs::read_to_string(path).await?;
         // Simple frontmatter parser (YAML between ---)
-        let mut name = path.parent().and_then(|p| p.file_name()).map(|s| s.to_string_lossy().to_string()).unwrap_or_default();
+        let mut name = path
+            .parent()
+            .and_then(|p| p.file_name())
+            .map(|s| s.to_string_lossy().to_string())
+            .unwrap_or_default();
         let mut description = String::new();
         let mut version = None;
-        let mut platforms = None;
-        let mut tags = vec![];
+        let platforms = None;
+        let tags = vec![];
 
         if let Some(rest) = content.strip_prefix("---") {
             if let Some(end) = rest.find("---") {

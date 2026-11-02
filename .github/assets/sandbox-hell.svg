@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 240" role="img">
+  <title>Sandbox choice: WASM, microsandbox, Quicksand</title>
+  <rect width="1280" height="240" rx="24" fill="#F3F7F8"/>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <g>
+      <rect x="48" y="36" width="360" height="168" rx="18" fill="#FFFFFF" stroke="#D0E0E6"/>
+      <text x="72" y="78" font-size="12" letter-spacing="2" fill="#4E6A76">LIGHT</text>
+      <text x="72" y="118" font-size="28" font-weight="680" fill="#102028">WASM</text>
+      <text x="72" y="156" font-size="16" fill="#4E6A76">kein Gastsystem</text>
+    </g>
+    <g>
+      <rect x="460" y="36" width="360" height="168" rx="18" fill="#FFFFFF" stroke="#0C7C9A"/>
+      <text x="484" y="78" font-size="12" letter-spacing="2" fill="#0C7C9A">DEFAULT</text>
+      <text x="484" y="118" font-size="28" font-weight="680" fill="#102028">MicroVM</text>
+      <text x="484" y="156" font-size="16" fill="#4E6A76">fremder Code</text>
+    </g>
+    <g>
+      <rect x="872" y="36" width="360" height="168" rx="18" fill="#FFFFFF" stroke="#D0E0E6"/>
+      <text x="896" y="78" font-size="12" letter-spacing="2" fill="#4E6A76">DESKTOP</text>
+      <text x="896" y="118" font-size="28" font-weight="680" fill="#102028">Quicksand</text>
+      <text x="896" y="156" font-size="16" fill="#4E6A76">QEMU Linux + GUI</text>
+    </g>
+  </g>
+</svg>

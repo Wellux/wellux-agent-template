@@ -1,0 +1,26 @@
+[package]
+name = "agent-core"
+description = "Wellux shared agent core: providers, skills, guardrails, sessions, sandboxes."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[features]
+default = []
+mcp = []
+computer-use = []
+memory-engram = []
+sandbox-microvm = []
+sandbox-quicksand = []
+sandbox-wasm = []
+otel = []
+
+[dependencies]
+anyhow = "1"
+serde = { version = "1", features = ["derive"] }
+tokio = { version = "1", features = ["fs", "rt"] }
+tracing = "0.1"
+uuid = { version = "1", features = ["v4"] }

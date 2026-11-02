@@ -1,149 +1,145 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header-dunkel.svg">
-  <img alt="Wellux Agent Native Project Template: Shared Rust core, Engram second brain, Hermes skills, guardrails, OpenTelemetry, native VMs and OrcaRouter." src=".github/assets/header-hell.svg" width="100%">
+  <img alt="Wellux Agent Native Project Template. Shared Rust core, Engram, skills, guardrails, OpenTelemetry, native VMs, OrcaRouter. Start with make personal." src=".github/assets/header-hell.svg" width="100%">
 </picture>
 
 <p align="center">
   <img alt="Rust" src="https://img.shields.io/badge/Rust-1.80+-1B8DBE?style=flat-square&logo=rust">
-  <img alt="Tauri" src="https://img.shields.io/badge/Tauri-2.0-1B8DBE?style=flat-square&logo=tauri">
-  <img alt="ADK-Rust" src="https://img.shields.io/badge/ADK--Rust-2.3-1B8DBE?style=flat-square">
+  <img alt="CI" src="https://github.com/Wellux/wellux-agent-template/actions/workflows/ci.yml/badge.svg">
   <img alt="License" src="https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-95969A?style=flat-square">
 </p>
 
-<h3 align="center">Wellux Agent Native Project Template</h3>
+<h3 align="center">Wellux — the agent-native starter</h3>
 
 <p align="center">
-  Build private and business agent-native applications that own their intelligence.<br>
+  A project template that compiles before it promises.<br>
   Shared Rust core · Engram second brain · Hermes-style skills · Guardrails · OpenTelemetry · Native VMs
 </p>
 
 <p align="center">
   <a href="https://well-ux.com"><b>well-ux.com</b></a> &nbsp;·&nbsp;
-  <a href="#quick-start">Quick Start</a> &nbsp;·&nbsp;
+  <a href="#start-in-60-seconds">60-second start</a> &nbsp;·&nbsp;
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
-  <a href="#features">Features</a>
+  <a href="#ten-next-moves">Ten next moves</a>
 </p>
 
 ---
 
-## Why Wellux?
+## Why this exists
 
-Most agent stacks lock you into someone else’s cloud and constraints.  
-**Wellux gives you a production-grade foundation you control.**
+Most agent stacks rent you someone else's cloud and then call it a platform.
+Wellux is the block you own: one Rust core, three start profiles, and a shell you can swap.
 
-- Local-first by default  
-- Shared Rust core reusable across platforms  
-- Guardrails, OpenTelemetry and isolated sandboxes built in  
-- Second brain + progressive skills out of the box  
+Local first. The policy lives in the core, not in a frontend. What is code, what is an interface, and what is still a recipe are labeled separately — so the first hour is not archaeology.
 
-Whether you are building a personal companion or an enterprise agent platform — start here.
+## Start in 60 seconds
 
----
+You need Rust 1.80+. Engram, Quicksand and API keys are optional until the profile you pick asks for them.
 
-## Features
+```bash
+git clone https://github.com/Wellux/wellux-agent-template.git
+cd wellux-agent-template
+cp .env.example .env
+make doctor
+make personal     # or: make business / make desktop
+make test
+```
 
-| Capability | Implementation | Status |
-|------------|----------------|--------|
-| **Shared Rust Core** | Domain, database and sync reusable across platforms | ✅ |
-| **Multi-Provider** | OpenAI, Anthropic, Gemini, xAI, **OrcaRouter**, Ollama | ✅ |
-| **Second Brain** | Engram (SQLite + FTS5 via MCP) | ✅ |
-| **Skills Loader** | Hermes-style progressive disclosure (`SKILL.md`) | ✅ |
-| **Computer Use** | Screenshot, mouse and keyboard control | ✅ |
-| **Guardrails** | Tool approval + PII redaction + content filters | ✅ |
-| **OpenTelemetry** | GenAI semantic conventions via `adk-telemetry` | ✅ |
-| **Native VMs** | microsandbox MicroVMs + Quicksand Bridge | ✅ |
-| **Dual Frontend** | Svelte 5 (fast HMR) or Leptos (pure Rust) | ✅ |
-| **LiveUI** | shadcn-style components for both paths | ✅ |
+| Profile | You are building | Command | Features |
+|---------|------------------|---------|----------|
+| Personal | A local companion with a second brain | `make personal` | `memory-engram` |
+| Business | Traces, MCP, a MicroVM for untrusted code | `make business` | `otel,mcp,memory-engram,sandbox-microvm` |
+| Desktop | Computer use, with a human in the loop | `make desktop` | `computer-use,sandbox-microvm,sandbox-quicksand,memory-engram` |
 
----
+New skill, same shape every time:
+
+```bash
+make skill NAME=release-notes
+```
+
+Details: [`docs/START.md`](docs/START.md).
 
 ## Architecture
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset=".github/assets/arch-dunkel.svg">
-  <img alt="Architecture: Svelte/Leptos and Tauri feed into Shared Rust Core, then agent-core and providers." src=".github/assets/arch-hell.svg" width="100%">
+  <img alt="Flow from Svelte, Leptos and Tauri into the shared Rust core, then agent-core, then OrcaRouter, Engram and Ollama." src=".github/assets/arch-hell.svg" width="100%">
 </picture>
 
-Shared Rust core sits in the middle. Frontends and Tauri shell on the left, agent runtime and providers on the right.
+The shell is thin on purpose. Sessions, skills, guardrails and the provider table sit in `crates/agent-core`. Frontends should render events, not invent policy.
 
----
+The connectors animate when the SVG is opened directly. If a viewer freezes motion, the labels still read in order: shell, core, agent, edge.
 
-## Quick Start
+## What is actually in the box
 
-### Prerequisites
+| Piece | Where | State |
+|-------|--------|--------|
+| Skills loader | `crates/agent-core/src/skills.rs` | Loads `SKILL.md` as an index, full text on demand |
+| Guardrails | `guardrails.rs` | Redacts email and `sk-` / `xai-` secrets. Tested |
+| Provider router | `providers.rs` | OpenAI, Anthropic, Gemini, xAI, **OrcaRouter**, Ollama. No network calls |
+| Sandbox choice | `sandbox.rs` | WASM, MicroVM, or Quicksand. Tested |
+| Quicksand bridge | `quicksand_bridge.rs` | Interface. Needs the Python package to run |
+| Sessions | `session_service.rs` | In-process stand-in named for a later libSQL swap |
+| OpenTelemetry | `telemetry.rs` | Hook. Starts an exporter only when you add one |
+| Engram | [`SECOND_BRAIN.md`](SECOND_BRAIN.md) | Install recipe plus tool names in the core |
+| Svelte / Leptos / Tauri | [`LIVEUI.md`](LIVEUI.md) | Recipe. Not vendored, so the core stays UI-free |
+| CI | `.github/workflows/ci.yml` | `fmt`, tests, all three profiles |
 
-- Rust 1.80+
-- Bun or Node.js
-- (Optional) API keys, Engram binary, Hermes
-
-```bash
-# Clone
-git clone https://github.com/Wellux/wellux-agent-template.git
-cd wellux-agent-template
-cp .env.example .env
-
-# Install Engram (recommended)
-brew install gentleman-programming/tap/engram
-
-# Run
-cd crates/tauri-app
-bun install
-bun run tauri dev
-```
-
-### Enable Features
-
-```bash
-# Full agent stack
-cargo build -p agent-core --features mcp,computer-use,memory-engram,sandbox-microvm
-```
-
----
-
-## Second Brain & Skills
-
-Wellux ships with two complementary memory systems:
-
-- **Engram** — persistent, searchable second brain (MCP)
-- **Skills Loader** — Hermes-inspired progressive disclosure for procedural knowledge
-
-Drop `SKILL.md` files into `skills/` and the agent lists and loads them on demand.
-
-See [`SECOND_BRAIN.md`](SECOND_BRAIN.md) for full details.
-
----
+OrcaRouter base URL, when you wire a client: `https://api.orcarouter.ai/v1`.
 
 ## Sandboxes
 
-Agents can spin up isolated environments:
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/sandbox-dunkel.svg">
+  <img alt="Three sandboxes: WASM when there is no guest OS, MicroVM as the default for untrusted code, Quicksand for a full Linux desktop." src=".github/assets/sandbox-hell.svg" width="100%">
+</picture>
 
-| Runtime | Use Case | Feature Flag |
-|---------|----------|--------------|
-| **microsandbox** | Fast MicroVMs (recommended) | `sandbox-microvm` |
-| **Quicksand** | Full QEMU Linux + Desktop | `sandbox-quicksand` |
-| **WASM** | Lightweight sandboxes | `sandbox-wasm` |
+`SandboxManager::recommend` picks the smallest runtime that fits: Quicksand only for a desktop, MicroVM for untrusted code, WASM otherwise.
 
----
+## Map
 
-## Production Checklist
+```text
+crates/agent-core     shared core and tests
+skills/_template      stamp for make skill
+skills/wellux-desktop-agent
+docs/START.md         the 60-second path, written out
+docs/MAP.md           which file owns which promise
+docs/NEXT.md          ten moves that are not in the repo yet
+.github/assets        header, architecture, sandbox — light and dark
+```
 
-- [x] Shared Core with adapter pattern
-- [x] Multi-provider (incl. OrcaRouter)
-- [x] Engram Second Brain
-- [x] Hermes-style Skills Loader
-- [x] Tool Approval + Guardrails
-- [x] OpenTelemetry
-- [x] Native VMs (microsandbox + Quicksand Bridge)
-- [x] Computer-Use tools
-- [x] Dual frontend paths
-- [x] Feature flags & CI/CD
+See [`docs/MAP.md`](docs/MAP.md).
 
----
+## Ten blocks in this template
+
+1. Three start profiles, one Makefile.
+2. A core that `cargo test` can prove, offline.
+3. An honest matrix instead of a quick start that pointed at a missing `crates/tauri-app`.
+4. CI on every push.
+5. `make skill NAME=` from `skills/_template`.
+6. Guardrails with tests.
+7. A provider router, OrcaRouter recommended.
+8. SVG motion for header, architecture and sandbox. Still readable when still.
+9. A one-page repo map.
+10. Template hygiene: licenses, `rust-toolchain`, `make doctor`, issue template.
+
+## Ten next moves
+
+Not built. Each one docks onto a seam that already exists. Full notes in [`docs/NEXT.md`](docs/NEXT.md).
+
+1. **Tauri shell as a crate** — chat, streaming, the approval dialog. Today that is `LIVEUI.md`.
+2. **One `UiEvent` for Svelte and Leptos** — so approval logic cannot drift across two UIs.
+3. **`make doctor` talks to Engram** — version plus an MCP handshake, not only "binary on PATH".
+4. **Approval queue** — computer-use blocks until a human says yes. The flag is already set.
+5. **OTel without a collector** — last 20 spans in a local debug panel.
+6. **`xtask new-app`** — rename crate, bundle id and window title in one command.
+7. **`sandbox.toml`** — image and memory in one file, flags only select the profile.
+8. **Signed skills** — the loader refuses a `SKILL.md` that is not on the trust list.
+9. **Ten golden tasks** — `evals/` for guardrails and skills, still offline in CI.
+10. **A public companion repo** — one product that uses only this template, so the second reader sees a living app.
 
 ## License
 
-MIT OR Apache-2.0
-
----
+MIT OR Apache-2.0. Pick either. See `LICENSE-MIT` and `LICENSE-APACHE`.
 
 <p align="center"><sub>Built by <a href="https://github.com/Wellux">Marco Mengele · Wellux</a> · One block at a time.</sub></p>

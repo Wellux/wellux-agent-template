@@ -25,7 +25,12 @@ impl QuicksandBridge {
         }
 
         let id = Uuid::new_v4().to_string();
-        tracing::info!("Starting Quicksand VM {} with image {}", id, image);
+        tracing::info!(
+            "Starting Quicksand VM {} with image {} ({} MB)",
+            id,
+            image,
+            memory_mb
+        );
 
         // In production this would call the Python API via a long-running process
         // or a small Python helper script. For the template we expose the interface.

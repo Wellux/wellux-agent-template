@@ -1,26 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 380" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" role="img">
+  <title>Wellux architecture: shell, shared core, agent-core, providers</title>
   <defs>
     <style>
-      .n { animation: pulse 2.6s ease-in-out infinite; }
-      .flow { stroke-dasharray: 8 6; animation: flow 1.4s linear infinite; }
-      @keyframes pulse { 0%,100% { opacity:.5 } 50% { opacity:1 } }
-      @keyframes flow { to { stroke-dashoffset: -28; } }
-      @media (prefers-reduced-motion: reduce) { .n, .flow { animation: none; } }
+      .flow { stroke-dasharray: 5 8; animation: flow 2.2s linear infinite; }
+      @keyframes flow { to { stroke-dashoffset: -52; } }
+      @media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
     </style>
   </defs>
-  <rect width="1280" height="380" rx="16" fill="#FAFBFC" stroke="#E6EAEE"/>
-  <text x="48" y="52" font-family="system-ui" font-size="13" font-weight="600" fill="#8A9099" letter-spacing="1.8">ARCHITECTURE</text>
-  <g font-family="system-ui" font-size="13" fill="#0F1419" text-anchor="middle">
-    <rect class="n" x="48" y="140" width="210" height="68" rx="12" fill="#FFFFFF" stroke="#1B8DBE" stroke-width="1.5"/>
-    <text x="153" y="178">Svelte 5 / Leptos</text>
-    <rect class="n" x="310" y="140" width="190" height="68" rx="12" fill="#FFFFFF" stroke="#1B8DBE" stroke-width="1.5" style="animation-delay:.12s"/>
-    <text x="405" y="178">Tauri Shell</text>
-    <rect class="n" x="550" y="128" width="230" height="92" rx="12" fill="#1B8DBE"/>
-    <text x="665" y="178" fill="#FFFFFF" font-weight="600">Shared Rust Core</text>
-    <rect class="n" x="830" y="140" width="190" height="68" rx="12" fill="#FFFFFF" stroke="#1B8DBE" stroke-width="1.5" style="animation-delay:.24s"/>
-    <text x="925" y="178">agent-core</text>
-    <rect class="n" x="1060" y="140" width="170" height="68" rx="12" fill="#FFFFFF" stroke="#1B8DBE" stroke-width="1.5" style="animation-delay:.36s"/>
-    <text x="1145" y="178">Providers</text>
+  <rect width="1280" height="300" rx="24" fill="#F3F7F8"/>
+  <line class="flow" x1="250" y1="150" x2="390" y2="150" stroke="#0C7C9A" stroke-width="2"/>
+  <line class="flow" x1="570" y1="150" x2="710" y2="150" stroke="#0C7C9A" stroke-width="2"/>
+  <line class="flow" x1="910" y1="150" x2="1050" y2="150" stroke="#0C7C9A" stroke-width="2"/>
+  <g font-family="ui-sans-serif, system-ui, sans-serif">
+    <g>
+      <rect x="48" y="70" width="200" height="160" rx="18" fill="#FFFFFF" stroke="#D0E0E6"/>
+      <text x="68" y="104" font-size="12" letter-spacing="2" fill="#4E6A76">SHELL</text>
+      <text x="68" y="140" font-size="22" font-weight="680" fill="#102028">Svelte</text>
+      <text x="68" y="168" font-size="22" font-weight="680" fill="#102028">Leptos</text>
+      <text x="68" y="200" font-size="16" fill="#4E6A76">Tauri 2</text>
+    </g>
+    <g>
+      <rect x="392" y="70" width="176" height="160" rx="18" fill="#FFFFFF" stroke="#0C7C9A"/>
+      <text x="412" y="104" font-size="12" letter-spacing="2" fill="#0C7C9A">CORE</text>
+      <text x="412" y="146" font-size="22" font-weight="680" fill="#102028">Shared</text>
+      <text x="412" y="178" font-size="22" font-weight="680" fill="#102028">Rust</text>
+    </g>
+    <g>
+      <rect x="712" y="48" width="196" height="204" rx="18" fill="#E7F2F5" stroke="#D0E0E6"/>
+      <text x="732" y="82" font-size="12" letter-spacing="2" fill="#4E6A76">AGENT-CORE</text>
+      <text x="732" y="118" font-size="16" fill="#102028">Skills</text>
+      <text x="732" y="146" font-size="16" fill="#102028">Guardrails</text>
+      <text x="732" y="174" font-size="16" fill="#102028">Sandbox</text>
+      <text x="732" y="202" font-size="16" fill="#102028">OpenTelemetry</text>
+    </g>
+    <g>
+      <rect x="1052" y="70" width="180" height="160" rx="18" fill="#FFFFFF" stroke="#D0E0E6"/>
+      <text x="1072" y="104" font-size="12" letter-spacing="2" fill="#4E6A76">EDGE</text>
+      <text x="1072" y="140" font-size="18" font-weight="680" fill="#102028">OrcaRouter</text>
+      <text x="1072" y="168" font-size="16" fill="#4E6A76">Engram</text>
+      <text x="1072" y="196" font-size="16" fill="#4E6A76">Ollama</text>
+    </g>
   </g>
-  <path class="flow" d="M258 174 H310 M500 174 H550 M780 174 H830 M1020 174 H1060" stroke="#1B8DBE" stroke-width="1.5" fill="none"/>
 </svg>
