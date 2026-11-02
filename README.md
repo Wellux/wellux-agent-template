@@ -1,7 +1,4 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header-dunkel.svg">
-  <img alt="Wellux agent template. Compiles before it promises. One core, three profiles, doors that stay shut until the keys exist." src=".github/assets/header-hell.svg" width="100%">
-</picture>
+<img alt="Four obsidian monoliths in a dark room, cut by one cyan line. The Wellux agent template: one core, and only what is connected." src=".github/assets/hero-8k.jpg" width="100%">
 
 <h3 align="center">A template that compiles before it promises.</h3>
 
