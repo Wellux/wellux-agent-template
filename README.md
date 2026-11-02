@@ -1,23 +1,28 @@
-<div align="center">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header-dunkel.svg">
+  <img alt="wellux-agent-template: Shared Rust core, Engram second brain, Hermes skills, guardrails, OpenTelemetry, native VMs and OrcaRouter." src=".github/assets/header-hell.svg" width="100%">
+</picture>
 
-<img src="./assets/logo.png" alt="Wellux" width="140"/>
+<p align="center">
+  <img alt="Rust" src="https://img.shields.io/badge/Rust-1.80+-1B8DBE?style=flat-square&logo=rust">
+  <img alt="Tauri" src="https://img.shields.io/badge/Tauri-2.0-1B8DBE?style=flat-square&logo=tauri">
+  <img alt="ADK-Rust" src="https://img.shields.io/badge/ADK--Rust-2.3-1B8DBE?style=flat-square">
+  <img alt="License" src="https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-95969A?style=flat-square">
+</p>
 
-# Wellux
+<h3 align="center">Agent-native applications you own.</h3>
 
-### Agent-Native Application Starter Kit
+<p align="center">
+  Shared Rust core that scales from desktop to mobile and embedded.<br>
+  Engram second brain · Hermes-style skills · Guardrails · OpenTelemetry · Native VMs
+</p>
 
-**Build private and business applications that own their intelligence.**
-
-[![Rust](https://img.shields.io/badge/Rust-1.80+-orange?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
-[![Tauri](https://img.shields.io/badge/Tauri-2.0-blue?style=for-the-badge&logo=tauri)](https://tauri.app/)
-[![ADK-Rust](https://img.shields.io/badge/ADK--Rust-2.3-green?style=for-the-badge)](https://adk-rust.com)
-[![License](https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue?style=for-the-badge)](LICENSE)
-
-[Quick Start](#quick-start) · [Architecture](#architecture) · [Features](#features) · [well-ux.com](https://well-ux.com)
-
-<img src="./assets/hero.png" alt="Wellux Agent Interface" width="100%"/>
-
-</div>
+<p align="center">
+  <a href="https://well-ux.com"><b>well-ux.com</b></a> &nbsp;·&nbsp;
+  <a href="#quick-start">Quick Start</a> &nbsp;·&nbsp;
+  <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
+  <a href="#features">Features</a>
+</p>
 
 ---
 
@@ -27,7 +32,7 @@ Most agent stacks lock you into someone else’s cloud and constraints.
 **Wellux gives you a production-grade foundation you control.**
 
 - Local-first by default  
-- Shared Rust core that scales from desktop to mobile and embedded  
+- Shared Rust core reusable across platforms  
 - Guardrails, OpenTelemetry and isolated sandboxes built in  
 - Second brain + progressive skills out of the box  
 
@@ -55,7 +60,7 @@ Whether you are building a personal companion or an enterprise agent platform �
 ## Architecture
 
 ```
-┌──────────────────────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────────────────┐
 │                         Wellux                              │
 │  ┌─────────────┐  ┌──────────────┐  ┌──────────────────┐  │
 │  │  Svelte 5   │  │   Leptos     │  │   Tauri Shell     │  │
@@ -75,7 +80,7 @@ Whether you are building a personal companion or an enterprise agent platform �
 │              │ Engram · Skills       │                     │
 │              │ Sandbox · Computer-Use│                     │
 │              └──────────────────────────┘                     │
-└────────────────────────────────────────────────────────────────────────┘
+└──────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -158,12 +163,4 @@ MIT OR Apache-2.0
 
 ---
 
-<div align="center">
-
-**Built for private and business intelligence.**
-
-[well-ux.com](https://well-ux.com) · [GitHub](https://github.com/Wellux)
-
-<img src="./assets/second-brain.png" alt="Second Brain" width="80%"/>
-
-</div>
+<p align="center"><sub>Built by <a href="https://github.com/Wellux">Marco Mengele · Wellux</a> · One block at a time.</sub></p>

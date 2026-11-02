@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="100%">
+  <defs>
+    <style>
+      .ri { animation: rise .7s cubic-bezier(.2,.7,.3,1) both; }
+      .dp { animation: drop .55s cubic-bezier(.2,.7,.3,1) both; }
+      @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+      @keyframes drop { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: none; } }
+      @media (prefers-reduced-motion: reduce) { .ri, .dp { animation: none; } }
+    </style>
+    <clipPath id="wall"><rect x="820" y="40" width="420" height="340"/></clipPath>
+  </defs>
+  <rect width="1280" height="420" rx="16" fill="#FFFFFF" stroke="#DDE3E8"/>
+  <text class="ri" x="48" y="92" font-family="system-ui,sans-serif" font-size="13" fill="#8A9099" letter-spacing="1.5">WELLUX · AGENT TEMPLATE</text>
+  <text class="ri" x="48" y="148" font-family="system-ui,sans-serif" font-size="42" font-weight="700" fill="#16191D">wellux-agent-template</text>
+  <text class="ri" x="48" y="192" font-family="system-ui,sans-serif" font-size="16" fill="#4B535D">Shared Rust core · Engram second brain · Hermes skills</text>
+  <text class="ri" x="48" y="216" font-family="system-ui,sans-serif" font-size="16" fill="#4B535D">Guardrails · OpenTelemetry · Native VMs · OrcaRouter</text>
+  <rect class="ri" x="48" y="250" width="92" height="28" rx="14" fill="#1B8DBE"/>
+  <text class="ri" x="64" y="268" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#FFFFFF">READY</text>
+  <text class="ri" x="152" y="268" font-family="system-ui,sans-serif" font-size="13" fill="#8A9099">Tauri 2 · ADK-Rust</text>
+  <g clip-path="url(#wall)">
+    <path class="dp" d="M880 80 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#1B8DBE" style="animation-delay:.4s"/>
+    <path class="dp" d="M950 80 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#21A8E0" style="animation-delay:.5s"/>
+    <path class="dp" d="M1020 80 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#1B8DBE" style="animation-delay:.6s"/>
+    <path class="dp" d="M1090 80 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#7CCBEB" style="animation-delay:.7s"/>
+    <path class="dp" d="M915 130 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#21A8E0" style="animation-delay:.55s"/>
+    <path class="dp" d="M985 130 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#1B8DBE" style="animation-delay:.65s"/>
+    <path class="dp" d="M1055 130 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#21A8E0" style="animation-delay:.75s"/>
+    <path class="dp" d="M880 180 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#7CCBEB" style="animation-delay:.7s"/>
+    <path class="dp" d="M950 180 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#1B8DBE" style="animation-delay:.8s"/>
+    <path class="dp" d="M1020 180 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#21A8E0" style="animation-delay:.9s"/>
+    <path class="dp" d="M1090 180 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#1B8DBE" style="animation-delay:1s"/>
+  </g>
+</svg>
