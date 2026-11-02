@@ -1,33 +1,41 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 420" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 480" width="100%">
   <defs>
     <style>
-      .ri { animation: rise .7s cubic-bezier(.2,.7,.3,1) both; }
-      .dp { animation: drop .55s cubic-bezier(.2,.7,.3,1) both; }
-      @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-      @keyframes drop { from { opacity: 0; transform: translateY(-18px); } to { opacity: 1; transform: none; } }
-      @media (prefers-reduced-motion: reduce) { .ri, .dp { animation: none; } }
+      .rise { animation: rise .8s cubic-bezier(.16,.84,.32,1) both; }
+      .drop { animation: drop .65s cubic-bezier(.16,.84,.32,1) both; }
+      @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+      @keyframes drop { from { opacity: 0; transform: translateY(-22px); } to { opacity: 1; transform: none; } }
+      @media (prefers-reduced-motion: reduce) { .rise, .drop { animation: none; } }
     </style>
-    <clipPath id="wall"><rect x="820" y="40" width="420" height="340"/></clipPath>
+    <clipPath id="wall"><rect x="780" y="24" width="470" height="430"/></clipPath>
   </defs>
-  <rect width="1280" height="420" rx="16" fill="#0D1117" stroke="#262D36"/>
-  <text class="ri" x="48" y="92" font-family="system-ui,sans-serif" font-size="13" fill="#7D8590" letter-spacing="1.5">WELLUX · AGENT TEMPLATE</text>
-  <text class="ri" x="48" y="148" font-family="system-ui,sans-serif" font-size="42" font-weight="700" fill="#E9EEF3">wellux-agent-template</text>
-  <text class="ri" x="48" y="192" font-family="system-ui,sans-serif" font-size="16" fill="#A7B0BA">Shared Rust core · Engram second brain · Hermes skills</text>
-  <text class="ri" x="48" y="216" font-family="system-ui,sans-serif" font-size="16" fill="#A7B0BA">Guardrails · OpenTelemetry · Native VMs · OrcaRouter</text>
-  <rect class="ri" x="48" y="250" width="92" height="28" rx="14" fill="#2EA6DA"/>
-  <text class="ri" x="64" y="268" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#0D1117">READY</text>
-  <text class="ri" x="152" y="268" font-family="system-ui,sans-serif" font-size="13" fill="#7D8590">Tauri 2 · ADK-Rust</text>
+  <rect width="1280" height="480" rx="18" fill="#0D1117" stroke="#21262D"/>
+  <g stroke="#161B22" stroke-width="1" fill="none">
+    <path d="M0 80 H1280 M0 160 H1280 M0 240 H1280 M0 320 H1280 M0 400 H1280"/>
+    <path d="M160 0 V480 M320 0 V480 M480 0 V480 M640 0 V480 M800 0 V480 M960 0 V480 M1120 0 V480"/>
+  </g>
+  <text class="rise" x="56" y="88" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#7D8590" letter-spacing="2.2">WELLUX · AGENT TEMPLATE</text>
+  <text class="rise" x="56" y="148" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#F0F6FC" style="animation-delay:.1s">wellux-agent-template</text>
+  <text class="rise" x="56" y="196" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#A7B0BA" style="animation-delay:.2s">Shared Rust core · Engram second brain · Hermes skills</text>
+  <text class="rise" x="56" y="222" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#A7B0BA" style="animation-delay:.25s">Guardrails · OpenTelemetry · Native VMs · OrcaRouter</text>
+  <g class="rise" style="animation-delay:.35s">
+    <rect x="56" y="268" width="108" height="32" rx="16" fill="#2EA6DA"/>
+    <text x="78" y="288" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#0D1117">READY</text>
+    <text x="180" y="288" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#7D8590">Tauri 2 · ADK-Rust</text>
+  </g>
   <g clip-path="url(#wall)">
-    <path class="dp" d="M880 80 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#2EA6DA" style="animation-delay:.4s"/>
-    <path class="dp" d="M950 80 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#21A8E0" style="animation-delay:.5s"/>
-    <path class="dp" d="M1020 80 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#2EA6DA" style="animation-delay:.6s"/>
-    <path class="dp" d="M1090 80 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#7CCBEB" style="animation-delay:.7s"/>
-    <path class="dp" d="M915 130 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#21A8E0" style="animation-delay:.55s"/>
-    <path class="dp" d="M985 130 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#2EA6DA" style="animation-delay:.65s"/>
-    <path class="dp" d="M1055 130 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#21A8E0" style="animation-delay:.75s"/>
-    <path class="dp" d="M880 180 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#7CCBEB" style="animation-delay:.7s"/>
-    <path class="dp" d="M950 180 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#2EA6DA" style="animation-delay:.8s"/>
-    <path class="dp" d="M1020 180 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#21A8E0" style="animation-delay:.9s"/>
-    <path class="dp" d="M1090 180 l30 17 v34 l-30 17 l-30-17 v-34 z" fill="#2EA6DA" style="animation-delay:1s"/>
+    <path class="drop" d="M860 70 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#2EA6DA" style="animation-delay:.3s"/>
+    <path class="drop" d="M940 70 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#21A8E0" style="animation-delay:.4s"/>
+    <path class="drop" d="M1020 70 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#2EA6DA" style="animation-delay:.5s"/>
+    <path class="drop" d="M1100 70 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#7CCBEB" style="animation-delay:.6s"/>
+    <path class="drop" d="M900 140 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#21A8E0" style="animation-delay:.45s"/>
+    <path class="drop" d="M980 140 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#2EA6DA" style="animation-delay:.55s"/>
+    <path class="drop" d="M1060 140 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#21A8E0" style="animation-delay:.65s"/>
+    <path class="drop" d="M860 210 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#7CCBEB" style="animation-delay:.6s"/>
+    <path class="drop" d="M940 210 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#2EA6DA" style="animation-delay:.7s"/>
+    <path class="drop" d="M1020 210 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#21A8E0" style="animation-delay:.8s"/>
+    <path class="drop" d="M1100 210 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#2EA6DA" style="animation-delay:.9s"/>
+    <path class="drop" d="M900 280 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#21A8E0" style="animation-delay:.75s"/>
+    <path class="drop" d="M980 280 l36 20 v40 l-36 20 l-36-20 v-40 z" fill="#7CCBEB" style="animation-delay:.85s"/>
   </g>
 </svg>

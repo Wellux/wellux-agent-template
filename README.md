@@ -59,29 +59,12 @@ Whether you are building a personal companion or an enterprise agent platform �
 
 ## Architecture
 
-```
-┌──────────────────────────────────────────────────────────────────────┐
-│                         Wellux                              │
-│  ┌─────────────┐  ┌──────────────┐  ┌──────────────────┐  │
-│  │  Svelte 5   │  │   Leptos     │  │   Tauri Shell     │  │
-│  │  (HMR)      │  │  (pure Rust) │  │  Desktop + Mobile │  │
-│  └──────┬──────┘  └──────┬───────┘  └─────────┬─────────┘  │
-│         └─────────────────┼────────────────────┘            │
-│                          ▼                                 │
-│              ┌────────────────────────┐                     │
-│              │   Shared Rust Core    │                     │
-│              │  domain · db · sync   │                     │
-│              └───────────┬───────────┘                     │
-│                          ▼                                 │
-│              ┌──────────────────────────┐                     │
-│              │     agent-core        │                     │
-│              │ ADK · Providers       │                     │
-│              │ Guardrails · OTel     │                     │
-│              │ Engram · Skills       │                     │
-│              │ Sandbox · Computer-Use│                     │
-│              └──────────────────────────┘                     │
-└──────────────────────────────────────────────────────────────────────────────┘
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/arch-dunkel.svg">
+  <img alt="Architecture: Svelte/Leptos and Tauri feed into Shared Rust Core, then agent-core and providers." src=".github/assets/arch-hell.svg" width="100%">
+</picture>
+
+Shared Rust core sits in the middle. Frontends and Tauri shell on the left, agent runtime and providers on the right.
 
 ---
 

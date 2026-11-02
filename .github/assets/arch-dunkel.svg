@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="100%">
+  <defs>
+    <style>
+      .n { animation: pulse 2.4s ease-in-out infinite; }
+      @keyframes pulse { 0%,100% { opacity:.7 } 50% { opacity:1 } }
+      @media (prefers-reduced-motion: reduce) { .n { animation: none; } }
+    </style>
+  </defs>
+  <rect width="1280" height="320" rx="14" fill="#0D1117" stroke="#21262D"/>
+  <text x="48" y="48" font-family="system-ui" font-size="13" font-weight="600" fill="#7D8590" letter-spacing="1.5">ARCHITECTURE</text>
+  <g font-family="system-ui" font-size="13" fill="#F0F6FC" text-anchor="middle">
+    <rect class="n" x="80" y="100" width="180" height="56" rx="10" fill="#161B22" stroke="#2EA6DA" stroke-width="1.5"/>
+    <text x="170" y="132">Svelte 5 / Leptos</text>
+    <rect class="n" x="320" y="100" width="180" height="56" rx="10" fill="#161B22" stroke="#2EA6DA" stroke-width="1.5" style="animation-delay:.2s"/>
+    <text x="410" y="132">Tauri Shell</text>
+    <rect class="n" x="560" y="100" width="200" height="56" rx="10" fill="#2EA6DA"/>
+    <text x="660" y="132" fill="#0D1117">Shared Rust Core</text>
+    <rect class="n" x="820" y="100" width="180" height="56" rx="10" fill="#161B22" stroke="#2EA6DA" stroke-width="1.5" style="animation-delay:.4s"/>
+    <text x="910" y="132">agent-core</text>
+    <rect class="n" x="1040" y="100" width="160" height="56" rx="10" fill="#161B22" stroke="#2EA6DA" stroke-width="1.5" style="animation-delay:.6s"/>
+    <text x="1120" y="132">Providers</text>
+  </g>
+  <path d="M260 128 H320 M500 128 H560 M760 128 H820 M1000 128 H1040" stroke="#2EA6DA" stroke-width="1.5" fill="none" stroke-dasharray="4 4"/>
+</svg>
