@@ -19,6 +19,7 @@
 <p align="center">
   <a href="https://well-ux.com"><b>well-ux.com</b></a> &nbsp;·&nbsp;
   <a href="#start-in-60-seconds">60-second start</a> &nbsp;·&nbsp;
+  <a href="#start-a-project">Start a project</a> &nbsp;·&nbsp;
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
   <a href="#access">Access</a> &nbsp;·&nbsp;
   <a href="#ten-next-moves">Ten next moves</a>
@@ -42,8 +43,10 @@ git clone https://github.com/Wellux/wellux-agent-template.git
 cd wellux-agent-template
 cp .env.example .env
 make doctor
+make project NAME=my-agent
 make personal     # or: make business / make desktop
 make test
+make shell
 ```
 
 | Profile | You are building | Command | Features |
@@ -59,6 +62,16 @@ make skill NAME=release-notes
 ```
 
 Details: [`docs/START.md`](docs/START.md).
+
+## Start a project
+
+This is a template. On GitHub, use **Use this template** so the new repository is yours. Then name the checkout once:
+
+```bash
+make project NAME=my-agent
+```
+
+That writes `project.toml`, sets `WELLUX_AGENT_NAME`, and stamps `skills/my-agent/SKILL.md`. It refuses a second run, so a later skill cannot wipe the name. The walkthrough for someone who has never seen the repo is [`docs/PROJECT.md`](docs/PROJECT.md).
 
 ## Architecture
 
@@ -83,7 +96,8 @@ The connectors animate when the SVG is opened directly. If a viewer freezes moti
 | Sessions | `session_service.rs` | In-process stand-in named for a later libSQL swap |
 | OpenTelemetry | `telemetry.rs` | Hook. Starts an exporter only when you add one |
 | Engram | [`SECOND_BRAIN.md`](SECOND_BRAIN.md) | Install recipe plus tool names in the core |
-| Svelte / Leptos / Tauri | [`LIVEUI.md`](LIVEUI.md) | Recipe. Not vendored, so the core stays UI-free |
+| Base UI | `ui/`, `crates/shell` | `make shell` draws cards from `/api/surface`. Replace `ui/` to reskin |
+| Svelte / Leptos / Tauri | [`LIVEUI.md`](LIVEUI.md) | Optional. Not required to run |
 | CI | `.github/workflows/ci.yml` | `fmt`, tests, all three profiles |
 | Access boundary | `access.rs`, [`docs/ACCESS.md`](docs/ACCESS.md) | Tested: secrets that must not reach the browser |
 
@@ -127,9 +141,14 @@ Replace `ui/` to change the interface. The routes stay. See [`LIVEUI.md`](LIVEUI
 
 ```text
 crates/agent-core     shared core and tests
+crates/shell          local UI, loopback only
+ui/                   the base interface, replaceable
+project.toml          your project's name, set by make project
+.env.example          every key name, no values
 skills/_template      stamp for make skill
 skills/wellux-desktop-agent
 docs/START.md         the 60-second path, written out
+docs/PROJECT.md       how a third party starts their own project
 docs/MAP.md           which file owns which promise
 docs/NEXT.md          ten moves that are not in the repo yet
 docs/ACCESS.md        Supabase, PayPal, ChatGPT, Realtime

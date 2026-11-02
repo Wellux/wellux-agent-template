@@ -33,11 +33,31 @@ pub struct Door {
 
 #[derive(Debug, Clone, PartialEq, Eq, Serialize)]
 pub struct Surface {
+    pub project: String,
     pub doors: Vec<Door>,
 }
 
-pub fn surface(env: &BTreeMap<String, String>) -> Surface {
+pub fn project_name(toml: &str) -> String {
+    for line in toml.lines() {
+        let line = line.trim();
+        let Some(rest) = line.strip_prefix("name") else {
+            continue;
+        };
+        let rest = rest.trim().trim_start_matches('=').trim().trim_matches('"');
+        if !rest.is_empty()
+            && rest
+                .chars()
+                .all(|c| c.is_ascii_alphanumeric() || c == '-' || c == '_')
+        {
+            return rest.to_string();
+        }
+    }
+    "wellux".to_string()
+}
+
+pub fn surface(project: &str, env: &BTreeMap<String, String>) -> Surface {
     Surface {
+        project: project.to_string(),
         doors: vec![supabase(env), paypal(env), openai(env)],
     }
 }
@@ -231,17 +251,20 @@ mod tests {
 
     #[test]
     fn doors_follow_what_is_connected() {
-        let bare = surface(&env(&[]));
+        let bare = surface("wellux", &env(&[]));
         assert!(!bare.doors[0].connected);
         assert!(bare.doors[0].missing.contains(&"SUPABASE_URL"));
         assert!(!bare.doors[1].connected);
 
-        let ready = surface(&env(&[
-            ("SUPABASE_URL", "https://example.supabase.co"),
-            ("SUPABASE_PUBLISHABLE_KEY", "sb_publishable_x"),
-            ("PAYPAL_CLIENT_ID", "id"),
-            ("PAYPAL_CLIENT_SECRET", "secret"),
-        ]));
+        let ready = surface(
+            "wellux",
+            &env(&[
+                ("SUPABASE_URL", "https://example.supabase.co"),
+                ("SUPABASE_PUBLISHABLE_KEY", "sb_publishable_x"),
+                ("PAYPAL_CLIENT_ID", "id"),
+                ("PAYPAL_CLIENT_SECRET", "secret"),
+            ]),
+        );
         assert!(ready.doors[0].connected);
         assert!(ready.doors[0].missing.is_empty());
         assert!(ready.doors[1].connected);
@@ -264,5 +287,12 @@ mod tests {
             map.get("OPENAI_API_KEY").map(String::as_str),
             Some("sk-test")
         );
+    }
+
+    #[test]
+    fn project_name_reads_the_manifest_and_rejects_noise() {
+        assert_eq!(project_name("name = \"my-agent\"\n"), "my-agent");
+        assert_eq!(project_name("name = \"no spaces\"\n"), "wellux");
+        assert_eq!(project_name(""), "wellux");
     }
 }

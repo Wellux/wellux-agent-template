@@ -6,6 +6,7 @@ Rust 1.80 or newer. A network connection the first time Cargo fetches crates. No
 git clone https://github.com/Wellux/wellux-agent-template.git
 cd wellux-agent-template
 cp .env.example .env
+make project NAME=my-agent
 make doctor
 make test
 ```

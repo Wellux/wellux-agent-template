@@ -1,0 +1,3 @@
+# This checkout's name. `make project NAME=my-agent` sets it once.
+name = "wellux-agent-template"
+profile = "personal"

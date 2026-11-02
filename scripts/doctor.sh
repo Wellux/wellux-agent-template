@@ -44,6 +44,7 @@ else
 fi
 
 echo
+echo "New:       make project NAME=my-agent"
 echo "Profiles:  make personal | make business | make desktop"
 echo "Shell:     make shell     →  http://127.0.0.1:8787"
 echo "Access:    docs/ACCESS.md  (Supabase, PayPal, ChatGPT, Realtime)"

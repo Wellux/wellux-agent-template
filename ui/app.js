@@ -130,6 +130,14 @@ async function main() {
   await adoptSupabase();
   await showSession();
   const surface = await fetch("/api/surface").then((r) => r.json());
+  const brand = document.querySelector("#brand");
+  if (surface.project && surface.project !== "wellux-agent-template") {
+    brand.innerHTML = "";
+    brand.append(document.createTextNode(surface.project + " "));
+    const mark = document.createElement("span");
+    mark.textContent = "Shell";
+    brand.append(mark);
+  }
   const root = document.querySelector("#doors");
   root.replaceChildren(...surface.doors.map(renderDoor));
 }

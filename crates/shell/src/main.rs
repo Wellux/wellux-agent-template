@@ -138,7 +138,11 @@ async fn js(State(app): State<Arc<App>>) -> impl IntoResponse {
 }
 
 async fn api_surface(State(app): State<Arc<App>>) -> Json<surface::Surface> {
-    Json(surface::surface(&app.env))
+    let manifest = fs::read_to_string("project.toml").unwrap_or_default();
+    Json(surface::surface(
+        &surface::project_name(&manifest),
+        &app.env,
+    ))
 }
 
 async fn api_session(State(app): State<Arc<App>>) -> Json<Value> {

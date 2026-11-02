@@ -24,7 +24,10 @@ One page. If a promise is not in this list, it is not in the repo.
 | `skills/wellux-desktop-agent/` | The shipped example skill. |
 | `.github/assets/*.svg` | README graphics. Dark and light. Motion degrades to a still layout. |
 | `.github/workflows/ci.yml` | Format, test, three profiles. |
-| `docs/START.md` | The only quick start. |
+| `project.toml` | This checkout's name. Set once by `make project`. |
+| `.env.example` | Key names only. `.env` is gitignored. |
+| `docs/START.md` | The 60-second path. |
+| `docs/PROJECT.md` | How a third party starts their own project. |
 | `docs/NEXT.md` | Work that is intentionally absent. |
 | `SECOND_BRAIN.md` | Engram and Hermes, in German. |
 | `LIVEUI.md` | How a Svelte or Leptos shell should look. |

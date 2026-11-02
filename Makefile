@@ -1,4 +1,8 @@
-.PHONY: check test fmt personal business desktop skill doctor shell
+.PHONY: check test fmt personal business desktop skill doctor shell project
+
+project:
+	@test -n "$(NAME)" || (echo "Usage: make project NAME=my-agent" && exit 1)
+	@./scripts/new-project.sh "$(NAME)"
 
 shell:
 	cargo run -p wellux-shell

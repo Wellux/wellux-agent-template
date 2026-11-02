@@ -22,9 +22,9 @@ Svelte and Leptos should emit the same events (`Token`, `ToolRequested`, `ToolRe
 
 `init_otel` only reports whether `OTEL_EXPORTER_OTLP_ENDPOINT` is set. A ring buffer of the last 20 spans lets a desktop build show traces before anyone runs a collector.
 
-## 6. xtask new-app
+## 6. Bundle identity for a desktop shell
 
-Forks today are a search-and-replace. An xtask should rewrite package name, window title and bundle id, then refuse to run twice.
+`make project NAME=` now writes `project.toml`, the agent name and the first skill, and it will not run twice. What it does not do yet is rename a Tauri bundle id or a window title, because that crate is not in the tree. When `crates/tauri-app` exists, the same command should refuse to leave the bundle id as `com.wellux.template`.
 
 ## 7. sandbox.toml
 
