@@ -1,44 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 520" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 540" width="100%">
   <defs>
     <style>
-      .rise { animation: rise .9s cubic-bezier(.16,.84,.32,1) both; }
-      .drop { animation: drop .7s cubic-bezier(.16,.84,.32,1) both; }
-      .float { animation: float 4s ease-in-out infinite; }
-      @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-      @keyframes drop { from { opacity: 0; transform: translateY(-28px); } to { opacity: 1; transform: none; } }
-      @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-      @media (prefers-reduced-motion: reduce) { .rise, .drop, .float { animation: none; } }
+      .rise { animation: rise .85s cubic-bezier(.2,.8,.2,1) both; }
+      .drop { animation: drop .65s cubic-bezier(.2,.8,.2,1) both; }
+      .float { animation: float 5s ease-in-out infinite; }
+      .glow { animation: glow 3s ease-in-out infinite; }
+      @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+      @keyframes drop { from { opacity: 0; transform: translateY(-24px); } to { opacity: 1; transform: none; } }
+      @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+      @keyframes glow { 0%,100% { opacity: .8; } 50% { opacity: 1; } }
+      @media (prefers-reduced-motion: reduce) { .rise, .drop, .float, .glow { animation: none; } }
     </style>
-    <clipPath id="wall"><rect x="740" y="20" width="500" height="480"/></clipPath>
+    <clipPath id="wall"><rect x="720" y="16" width="520" height="500"/></clipPath>
   </defs>
-  <rect width="1280" height="520" rx="20" fill="#0D1117" stroke="#21262D"/>
+  <rect width="1280" height="540" rx="20" fill="#0D1117" stroke="#21262D"/>
   <g stroke="#161B22" stroke-width="1" fill="none">
-    <path d="M0 80 H1280 M0 160 H1280 M0 240 H1280 M0 320 H1280 M0 400 H1280"/>
-    <path d="M160 0 V520 M320 0 V520 M480 0 V520 M640 0 V520 M800 0 V520 M960 0 V520 M1120 0 V520"/>
+    <path d="M0 90 H1280 M0 180 H1280 M0 270 H1280 M0 360 H1280 M0 450 H1280"/>
+    <path d="M160 0 V540 M320 0 V540 M480 0 V540 M640 0 V540 M800 0 V540 M960 0 V540 M1120 0 V540"/>
   </g>
-  <text class="rise" x="64" y="92" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#7D8590" letter-spacing="2.4">WELLUX</text>
-  <text class="rise" x="64" y="152" font-family="system-ui, -apple-system, sans-serif" font-size="46" font-weight="700" fill="#F0F6FC" style="animation-delay:.08s">Agent Native</text>
-  <text class="rise" x="64" y="204" font-family="system-ui, -apple-system, sans-serif" font-size="46" font-weight="700" fill="#F0F6FC" style="animation-delay:.16s">Project Template</text>
-  <text class="rise" x="64" y="252" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#A7B0BA" style="animation-delay:.28s">Shared Rust core · Engram · Hermes skills · Guardrails</text>
-  <text class="rise" x="64" y="276" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#A7B0BA" style="animation-delay:.32s">OpenTelemetry · Native VMs · OrcaRouter</text>
-  <g class="rise" style="animation-delay:.42s">
-    <rect x="64" y="316" width="112" height="34" rx="17" fill="#2EA6DA"/>
-    <text x="88" y="338" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#0D1117">READY</text>
-    <text x="192" y="338" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#7D8590">Tauri 2 · ADK-Rust</text>
+  <text class="rise" x="64" y="96" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600" fill="#7D8590" letter-spacing="2.5">WELLUX</text>
+  <text class="rise" x="64" y="156" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#F0F6FC" style="animation-delay:.06s">Agent Native</text>
+  <text class="rise" x="64" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="#F0F6FC" style="animation-delay:.12s">Project Template</text>
+  <text class="rise" x="64" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#A7B0BA" style="animation-delay:.22s">Shared Rust core · Engram · Hermes skills · Guardrails</text>
+  <text class="rise" x="64" y="284" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#A7B0BA" style="animation-delay:.26s">OpenTelemetry · Native VMs · OrcaRouter</text>
+  <g class="rise" style="animation-delay:.36s">
+    <rect x="64" y="328" width="112" height="34" rx="17" fill="#2EA6DA"/>
+    <text x="88" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#0D1117">READY</text>
+    <text x="192" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#7D8590">Tauri 2 · ADK-Rust</text>
   </g>
   <g clip-path="url(#wall)">
-    <path class="drop float" d="M820 80 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#2EA6DA" style="animation-delay:.25s"/>
-    <path class="drop float" d="M920 80 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#21A8E0" style="animation-delay:.35s"/>
-    <path class="drop float" d="M1020 80 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#2EA6DA" style="animation-delay:.45s"/>
-    <path class="drop float" d="M1120 80 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#7CCBEB" style="animation-delay:.55s"/>
-    <path class="drop float" d="M870 160 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#21A8E0" style="animation-delay:.4s"/>
-    <path class="drop float" d="M970 160 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#2EA6DA" style="animation-delay:.5s"/>
-    <path class="drop float" d="M1070 160 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#21A8E0" style="animation-delay:.6s"/>
-    <path class="drop float" d="M820 240 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#7CCBEB" style="animation-delay:.55s"/>
-    <path class="drop float" d="M920 240 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#2EA6DA" style="animation-delay:.65s"/>
-    <path class="drop float" d="M1020 240 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#21A8E0" style="animation-delay:.75s"/>
-    <path class="drop float" d="M1120 240 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#2EA6DA" style="animation-delay:.85s"/>
-    <path class="drop float" d="M870 320 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#21A8E0" style="animation-delay:.7s"/>
-    <path class="drop float" d="M970 320 l42 24 v48 l-42 24 l-42-24 v-48 z" fill="#7CCBEB" style="animation-delay:.8s"/>
+    <path class="drop float glow" d="M800 70 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#2EA6DA" style="animation-delay:.2s"/>
+    <path class="drop float glow" d="M910 70 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#21A8E0" style="animation-delay:.3s"/>
+    <path class="drop float glow" d="M1020 70 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#2EA6DA" style="animation-delay:.4s"/>
+    <path class="drop float glow" d="M1130 70 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#7CCBEB" style="animation-delay:.5s"/>
+    <path class="drop float glow" d="M855 160 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#21A8E0" style="animation-delay:.35s"/>
+    <path class="drop float glow" d="M965 160 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#2EA6DA" style="animation-delay:.45s"/>
+    <path class="drop float glow" d="M1075 160 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#21A8E0" style="animation-delay:.55s"/>
+    <path class="drop float glow" d="M800 250 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#7CCBEB" style="animation-delay:.5s"/>
+    <path class="drop float glow" d="M910 250 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#2EA6DA" style="animation-delay:.6s"/>
+    <path class="drop float glow" d="M1020 250 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#21A8E0" style="animation-delay:.7s"/>
+    <path class="drop float glow" d="M1130 250 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#2EA6DA" style="animation-delay:.8s"/>
+    <path class="drop float glow" d="M855 340 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#21A8E0" style="animation-delay:.65s"/>
+    <path class="drop float glow" d="M965 340 l48 28 v56 l-48 28 l-48-28 v-56 z" fill="#7CCBEB" style="animation-delay:.75s"/>
   </g>
 </svg>
