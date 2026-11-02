@@ -5,7 +5,8 @@ One page. If a promise is not in this list, it is not in the repo.
 | Path | Owns |
 |------|------|
 | `crates/agent-core/src/lib.rs` | Public surface. Frontends import from here only. |
-| `agent.rs` | `create_agent`, session id, approval on by default. |
+| `access.rs` | Which credentials may enter the browser. Tested. |
+| `docs/ACCESS.md` | Supabase, PayPal, ChatGPT sign-in, Realtime. |
 | `providers.rs` | Provider table. No HTTP. |
 | `guardrails.rs` | Redaction and the approval flag. |
 | `skills.rs` | Hermes-style progressive disclosure. |

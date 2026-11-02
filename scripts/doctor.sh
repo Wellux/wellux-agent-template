@@ -37,6 +37,13 @@ else
   miss ".env  →  cp .env.example .env"
 fi
 
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1 && git ls-files --error-unmatch .env >/dev/null 2>&1; then
+  miss ".env is tracked by git — remove it from the index"
+else
+  ok ".env is not tracked"
+fi
+
 echo
 echo "Profiles:  make personal | make business | make desktop"
+echo "Access:    docs/ACCESS.md  (Supabase, PayPal, ChatGPT, Realtime)"
 echo "New skill: make skill NAME=my-skill"

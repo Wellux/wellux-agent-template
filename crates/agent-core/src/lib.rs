@@ -7,6 +7,7 @@
 //! are the switchboard documented in the README. This crate compiles with or
 //! without them: flags select a profile, they do not pull hidden services.
 
+pub mod access;
 pub mod agent;
 pub mod computer_use;
 pub mod guardrails;
@@ -19,7 +20,7 @@ pub mod skills;
 pub mod telemetry;
 pub mod tools;
 
-pub use agent::{create_agent, AgentSession};
+pub use access::{boundaries, may_enter_browser, Boundary, Exposure};
 pub use computer_use::computer_use_tools;
 pub use guardrails::{apply_guardrails, apply_guardrails_for, GuardrailOutcome};
 pub use providers::{create_provider, ProviderEndpoint, ProviderKind};

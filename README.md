@@ -20,6 +20,7 @@
   <a href="https://well-ux.com"><b>well-ux.com</b></a> &nbsp;·&nbsp;
   <a href="#start-in-60-seconds">60-second start</a> &nbsp;·&nbsp;
   <a href="#architecture">Architecture</a> &nbsp;·&nbsp;
+  <a href="#access">Access</a> &nbsp;·&nbsp;
   <a href="#ten-next-moves">Ten next moves</a>
 </p>
 
@@ -84,8 +85,24 @@ The connectors animate when the SVG is opened directly. If a viewer freezes moti
 | Engram | [`SECOND_BRAIN.md`](SECOND_BRAIN.md) | Install recipe plus tool names in the core |
 | Svelte / Leptos / Tauri | [`LIVEUI.md`](LIVEUI.md) | Recipe. Not vendored, so the core stays UI-free |
 | CI | `.github/workflows/ci.yml` | `fmt`, tests, all three profiles |
+| Access boundary | `access.rs`, [`docs/ACCESS.md`](docs/ACCESS.md) | Tested: secrets that must not reach the browser |
 
 OrcaRouter base URL, when you wire a client: `https://api.orcarouter.ai/v1`.
+
+## Access
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/access-dunkel.svg">
+  <img alt="Three doors: Supabase for login, PayPal for checkout, OpenAI for ChatGPT sign-in and the live API. Secrets stay on the server." src=".github/assets/access-hell.svg" width="100%">
+</picture>
+
+Login, payment, and the model are separate doors.
+
+- **Supabase** — email and OAuth (PKCE). Publishable key in the browser. Service role on the server. RLS on every table.
+- **PayPal** — Orders API v2. The server sets the amount, creates the order, captures it, and verifies the webhook. The button only carries the client id.
+- **OpenAI** — Continue with ChatGPT is OAuth plus PKCE against `auth.openai.com`. Plan usage counts only when the scope `chatgpt.tokens.use.direct` was actually granted. That login is not an API key. The live Realtime API in the browser receives a short-lived secret from `POST /v1/realtime/client_secrets`. `OPENAI_API_KEY` stays on the server.
+
+The full contract, endpoints, and the order of setup are in [`docs/ACCESS.md`](docs/ACCESS.md).
 
 ## Sandboxes
 
@@ -105,7 +122,8 @@ skills/wellux-desktop-agent
 docs/START.md         the 60-second path, written out
 docs/MAP.md           which file owns which promise
 docs/NEXT.md          ten moves that are not in the repo yet
-.github/assets        header, architecture, sandbox — light and dark
+docs/ACCESS.md        Supabase, PayPal, ChatGPT, Realtime
+.github/assets        header, architecture, access, sandbox — light and dark
 ```
 
 See [`docs/MAP.md`](docs/MAP.md).
